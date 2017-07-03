@@ -1,0 +1,29 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  /*border: 0;
+  outline: 0;*/
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+html {
+   width: 100vw;
+   height: 100%;
+   font-family: sans-serif;
+}
+
+.bodyWrap {
+   width: 100vw;
+   height: 96vh;
+   display: flex;
+   flex-direction: column;
+   /*justify-content: space-around;*/
+   align-items: center;
+   /*border: solid black 3px;*/
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+       <link rel="stylesheet" href="styles.css">
+      <title>GABBLE: Sign Up</title>
+   </head>
+   <body>
+      <div class="bodyWrap">
+         <h1>Sign up to start gabbin'!</h1>
+         <h2>Using the form below, please enter a username and password, then press submit. The password and the confirmation must match to continue.</h2>
+
+         <form method="POST" action= "/signUp" id="signUpForm">
+            Username: <input type="text" name="username" placeholder="Enter a username">
+            Password: <input type="password" name="password1" id="password1" placeholder="Enter a password">
+            Confirm Password: <input type="password" name="password2" id="password2" placeholder="Confirm password above by entering it again here">
+            <input type="submit" name="signUp" value="Sign Me Up!">
+         </form>
+         <!--script below src= https://www.sitepoint.com/using-the-html5-constraint-api-for-form-validation/ -->
+         <script type="text/javascript">
+            window.onload = function () {
+            	document.getElementById("password1").onchange = validatePassword;
+            	document.getElementById("password2").onchange = validatePassword;
+            }
+            function validatePassword(){
+            var pass2= document.getElementById("password2").value;
+            var pass1= document.getElementById("password1").value;
+            if(pass1!=pass2)
+            	document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+            else
+            	document.getElementById("password2").setCustomValidity('');
+            //empty string means no validation error
+            }
+         </script>
+      </div>
+   </body>
+</html>

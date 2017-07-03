@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const parseurl = require('parseurl');
+const path = require('path');
 const session = require('express-session');
 const expressValidator = require('express-validator');
 const mustacheExpress = require('mustache-express');
@@ -15,7 +16,10 @@ const app= express();
 app.engine('mustache', mustacheExpress());
 app.set('views', './views');
 app.set('view engine', 'mustache');
-app.use(express.static('./public'));;
+
+// styles
+app.use(express.static('public'));
+
 
 // parser middleware
 app.use(bodyParser.json());
@@ -49,8 +53,15 @@ app.get('/', function(req,res){
 app.get('/userList', function (req,res) {
    models.User.findAll().then(function(users){
       res.render('userList', {users: users});
-      // console.log(users);
    });
+});
+
+app.post('/to-signUp', function (req,res) {
+   res.redirect('/signUp');
+})
+
+app.get('/signUp', function (req,res) {
+   res.render('signUp');
 });
 
 
