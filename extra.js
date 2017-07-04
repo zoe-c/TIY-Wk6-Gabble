@@ -27,3 +27,25 @@
 //       console.log(Posts);
 //    })
 // });
+
+
+// create POST instance
+// const post = models.post.build({
+//    title: 'test post title',
+//    body: 'test post body',
+//    gabberId: 3
+// });
+//
+// post.save().then(function (newPost) {
+//    console.log(newPost);
+// });
+
+// // create LIKE instance
+// const like = models.like.build({
+//    status: true,
+//    postId: 1
+// });
+//
+// like.save().then(function (newLike) {
+//    console.log(newLike);
+// });

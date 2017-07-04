@@ -2,12 +2,9 @@
 module.exports = function(sequelize, DataTypes) {
   var like = sequelize.define('like', {
     status: DataTypes.BOOLEAN
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
-  });
+  }, {});
+  like.associate = function(models) {
+     like.belongsTo(models.post, {as: 'post', foreignKey: 'postId'})
+  }
   return like;
 };

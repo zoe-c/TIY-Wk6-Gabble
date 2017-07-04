@@ -39,30 +39,6 @@ app.use(session({
 
 // app.use('/user', userRouter);
 
-// test to see if post and user connect
-// models.Posts.findOne({
-//    include: [{
-//       model:models.user,
-//       as:'user'
-//    }].then(function(Posts){
-//       console.log(Posts);
-//    })
-// });
-
-// create POST instance
-// const post = models.post.build({
-//    title: 'test post title',
-//    body: 'test post body',
-//    gabberId: 3
-// });
-//
-// post.save().then(function (newPost) {
-//    console.log(newPost);
-// });
-
-
-
-
 app.get('/', function(req,res){
    res.render('index');
 });
@@ -73,10 +49,11 @@ app.post('/login', function (req,res){
 
   models.gabber.findOne({
     where: {
-      username: username
+      username: username,
+      password: password
     }
 }).then(gabber => {
-    if (gabber.password == password) {
+    if (gabber.password == password && gabber.username == username) {
       req.session.username = username;
       req.session.authenticated = true;
       res.redirect('/userHome');
@@ -91,8 +68,7 @@ app.post('/login', function (req,res){
 });
 
 app.get('/userHome', function (req,res) {
-   // console.log(req.session);
-   res.render('userHome')
+   res.render('userHome', {username: req.session.username})
 });
 
 // link to sign up page. login is on root.
@@ -115,8 +91,8 @@ app.post('/signUp', function (req, res) {
       console.log(username);
       next();
    });
-         // res.redirect('/');
-         res.send("new gabber added!")
+         res.redirect('/');
+         // res.send("new gabber added!")
          // res.redirect('/userHome/:username');
 });
 
