@@ -6,25 +6,28 @@
       <title>GABBLE: Login</title>
    </head>
    <body>
-     <div class="bodyWrap">
-        <div id= "titleCard">
-         <h1>GABBLE</h1>
-         <h2><i>get your gab on!</i> </h2>
-        </div>
-      <h4>LOGIN</h4>
+      <div class="bodyWrap">
 
-
-      <form method="POST" action= "/login" id="logInForm">
-         <input type="text" name="username" placeholder="Enter your Username" id="username">
-         <input type="password" name="password" placeholder="Enter your Password" id="password">
-         <input type="submit" name="submit" value="I'M BACK" id="imback">
-      </form>
-
-
-      <form method="POST" action="to-signUp" name="to-signUp">
-         <label name="signup"> <i>NEW TO GABBLE?</i> Sign up with us here: </label>
-         <input type="submit" name="to-signup" value="I'M NEW" id="imnew">
-      </form>
+         <div id= "titleDiv">
+            <h1>GABBLE</h1>
+            <h2><i>get your gab on</i> </h2>
+         </div>
+         <div id="loginDiv">
+            <h4>LOGIN</h4>
+            <form method="POST" action= "/login" id="loginForm">
+               <label for="username">USERNAME :</label>
+               <input type="text" name="username" placeholder="Enter your Username" id="username">
+               <label for="password">PASSWORD :</label>
+               <input type="password" name="password" placeholder="Enter your Password" id="password">
+               <input type="submit" name="submit" value="I'M BACK" id="imback">
+            </form>
+         </div>
+         <div id="signupDiv">
+            <p><i>NEW TO GABBLE?</i>  Sign up here:</p>
+            <form method="POST" action="to-signUp" name="to-signUp" id= "to-signUp">
+               <input type="submit" name="to-signup" value="I'M NEW" id="imnew">
+            </form>
+         </div>
 
      </div>
    </body>

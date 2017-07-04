@@ -5,31 +5,32 @@
 * {
   margin: 0;
   padding: 0;
-  /*border: 0;
-  outline: 0;*/
-  /*font-size: 100%;*/
+  border: 0;
+  outline: 0;
   vertical-align: baseline;
   background: transparent;
+  /*border: solid black 1px;*/
 }
 
 html {
-   min-width: 700px;
    width: 100vw;
+   height: 100%;
    font-family: sans-serif;
 }
 
 .bodyWrap {
    width: 100vw;
-   height: 100vh;
+   padding: 2em;
+   height: 100vw;
    display: flex;
    flex-direction: column;
    align-items: center;
-   /*border: solid black 3px;*/
+
 }
 
-#titleCard {
+#titleDiv {
    width: 100vw;
-   height: 20vw;
+   height: 30vw;
    display: flex;
    flex-direction: column;
    justify-content: center;
@@ -39,47 +40,87 @@ html {
 }
 
 h1 {
-   font-size: 10vw;
+   font-size: 15vw;
    padding: 0;
 }
 
 h2 {
-   font-size: 6vw;
+   font-size: 5vw;
    font-weight: lighter;
-}
-
-h4 {
-   width: 100vw;
-   height: 10vw;
-   display: flex;
-   justify-content: center;
-   align-items: baseline;
-   text-align: center;
-   font-size: 4vw;
    /*border: solid black 1px;*/
 }
+/*---------------------------------*/
 
-#logInForm {
-   width: 100vw;
-   height: 25vw;
+#loginDiv {
+   width: 65vw;
+   height: 45vw;
    display: flex;
    flex-direction: column;
    justify-content: center;
-   align-items:center;
+   align-items: center;
+   border: solid black 1px;
+   border-radius: 4px;
 }
 
-#username, #password {
-   width: 40vw;
-   height: 8vw;
+h4 {
+   /*color: lightgrey;*/
    text-align: center;
-   margin: 5px;
-   border-radius: 3px;
+   font-size: 4vw;
 }
-label{
-   width:
+#loginForm {
+   width: 60vw;
+   height: 75%;
+   display: flex;
+   flex-flow: wrap column;
+   justify-content: space-around;
+   align-items: center;
+   /*border: solid black 1px;*/
 }
 
-#imback, #imnew {
-   width: 40vw;
-   height: 4vw;
+label {
+   width: 75%;
+   /*text-align: center;*/
+   font-size: 1.75vw;
+   font-weight: bolder;
+}
+
+#username, #password, #imback {
+   width: 75%;
+   height: 5vw;
+   text-align: center;
+   font-size: 1.75vw;
+   border-radius: 3px;
+   border: solid black 1px;
+}
+
+#imback {
+   margin-top: 3vw;
+   font-weight: bolder;
+}
+/*------------------------------------*/
+#signupDiv {
+   width: 65vw;
+   height: 15vw;
+   display: flex;
+   flex-flow: wrap column;
+   justify-content: center;
+   align-items: center;
+   /*border: solid black 1px;
+   border-radius: 4px;*/
+}
+
+#to-signUp {
+   width: 60vw;
+   text-align: center;
+}
+
+#imnew {
+   width: 75%;
+   height: 5vw;
+   text-align: center;
+   font-size: 1.75vw;
+   border-radius: 3px;
+   border: solid black 1px;
+   margin-top: 2vw;
+   font-weight: bolder;
 }

@@ -5,11 +5,11 @@
 * {
   margin: 0;
   padding: 0;
-  border: 0;
-  outline: 0;
+  /*border: 0;
+  outline: 0;*/
+  /*font-size: 100%;*/
   vertical-align: baseline;
   background: transparent;
-  /*border: solid black 1px;*/
 }
 
 html {
@@ -20,16 +20,10 @@ html {
 
 .bodyWrap {
    width: 100vw;
-   padding: 2em;
-   height: 100vw;
+   height: 96vh;
    display: flex;
    flex-direction: column;
+   /*justify-content: space-around;*/
    align-items: center;
-}
-h1 {
-   font-size: 15vw;
-}
-h2 {
-   font-size: 5vw;
-   font-weight: lighter;
+   border: solid black 3px;
 }
