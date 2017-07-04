@@ -39,6 +39,8 @@ app.use(session({
 
 // app.use('/user', userRouter);
 
+
+// REQUESTS---------------------------------------------------------
 app.get('/', function(req,res){
    res.render('index');
 });
@@ -67,9 +69,7 @@ app.post('/login', function (req,res){
   return req.session;
 });
 
-app.get('/userHome', function (req,res) {
-   res.render('userHome', {username: req.session.username})
-});
+//------------------------------------------------------------------
 
 // link to sign up page. login is on root.
 app.post('/to-signUp', function (req,res) {
@@ -81,7 +81,7 @@ app.get('/signUp', function (req,res) {
    res.render('signUp');
 });
 
-// add user to "gabbers" upon sign up. log username/ pw
+// add user to "gabbers" on sign up. log username & pw
 app.post('/signUp', function (req, res) {
    const gabber = models.gabber.build({
       username: req.body.username,
@@ -94,6 +94,28 @@ app.post('/signUp', function (req, res) {
          res.redirect('/');
          // res.send("new gabber added!")
          // res.redirect('/userHome/:username');
+});
+
+// -------------------------------------------------------------
+
+app.get('/userHome', function (req,res) {
+   res.render('userHome', {username: req.session.username})
+});
+
+// -------------------------------------------------------------
+
+app.get('/gaggle', function (req,res) {
+   models.post.findAll().then(function(posts) {
+      res.render('gabbleGaggle', {posts: posts})
+   });
+
+});
+
+// -----------------------------------------------------------
+app.post('/logout', function (req,res) {
+   req.session.destroy();
+   // console.log("bye!")
+   res.redirect('/');
 });
 
 app.listen(3000, function() {

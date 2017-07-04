@@ -27,3 +27,9 @@ html {
    align-items: center;
    border: solid black 3px;
 }
+
+#fillerDiv {
+   width: 100vw;
+   height: 30vw;
+   border: solid black 1px;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+       <link rel="stylesheet" href="styles.css">
+      <title>GABBLE: The Gaggle</title>
+   </head>
+   <body>
+      <div class="bodyWrap">
+         <h1>The Gaggle</h1>
+         <p> (community posts) </p>
+
+         {{#posts}}
+         <ul>
+            <li>{{title}}</li>
+            <li>{{body}}</li>
+            <li>{{createdAt}}</li>
+            <li>{{gabberId}}</li>
+            <!-- <li>{{gabberName}}</li> -->
+            <!-- <li> like count. need to add</li> -->
+            <!--form for like button? somehow add to the count ^  -->
+         </ul>
+         {{/posts}}
+
+
+         <form id="logoutForm" method="POST" action= "/logout">
+            <input type= "submit" value="logout">
+         </form>
+
+      </div>
+   </body>
+</html>
