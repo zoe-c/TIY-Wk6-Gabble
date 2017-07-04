@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var Likes = sequelize.define('Likes', {
+  var like = sequelize.define('like', {
     status: DataTypes.BOOLEAN
   }, {
     classMethods: {
@@ -9,5 +9,5 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
-  return Likes;
+  return like;
 };

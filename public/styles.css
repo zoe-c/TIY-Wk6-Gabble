@@ -7,7 +7,7 @@
   padding: 0;
   /*border: 0;
   outline: 0;*/
-  font-size: 100%;
+  /*font-size: 100%;*/
   vertical-align: baseline;
   background: transparent;
 }
@@ -25,5 +25,5 @@ html {
    flex-direction: column;
    /*justify-content: space-around;*/
    align-items: center;
-   /*border: solid black 3px;*/
+   border: solid black 3px;
 }

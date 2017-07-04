@@ -34,15 +34,39 @@ app.use(expressValidator());
 //     console.error('Unable to connect to the database:', err);
 //   });
 
-// create instance
-// const user = models.User.build({
-//    name: 'Zoe',
-//    password: 'zpassword'
+
+// test to see if post and user connect
+// models.Posts.findOne({
+//    include: [{
+//       model:models.user,
+//       as:'user'
+//    }].then(function(Posts){
+//       console.log(Posts);
+//    })
+// });
+
+// create GABBER instance
+// const gabber = models.gabber.build({
+//    username: 'John',
+//    password: 'jpassword'
 // });
 //
-// user.save().then(function (newUser) {
-//   console.log(newUser.id);
+// gabber.save().then(function (newGabber) {
+//   console.log(newGabber);
+//   console.log(newGabber.id);
 // });
+
+// create POST instance
+// const post = models.post.build({
+//    title: 'test post title',
+//    body: 'test post body',
+//    gabberId: 3
+// });
+//
+// post.save().then(function (newPost) {
+//    console.log(newPost);
+// });
+
 
 
 
@@ -51,19 +75,18 @@ app.get('/', function(req,res){
 });
 
 app.get('/userList', function (req,res) {
-   models.User.findAll().then(function(users){
-      res.render('userList', {users: users});
+   models.gabber.findAll().then(function(gabbers){
+      res.render('userList', {gabbers: gabbers});
    });
 });
 
 app.post('/to-signUp', function (req,res) {
    res.redirect('/signUp');
-})
+});
 
 app.get('/signUp', function (req,res) {
    res.render('signUp');
 });
-
 
 app.listen(3000, function(){
    console.log('Listening on port 3000!');
