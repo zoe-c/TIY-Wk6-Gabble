@@ -2,25 +2,28 @@
 <html>
    <head>
       <meta charset="utf-8">
-       <link rel="stylesheet" href="styles.css">
-      <title>GABBLE: Home</title>
+       <link rel="stylesheet" href="index.css">
+      <title>GABBLE: Login</title>
    </head>
    <body>
      <div class="bodyWrap">
-      <h1>GABBLE</h1>
-      <h2><i>get your gab on!</i> </h2>
-      <h3>Login below or follow the link provided to sign up today.</h3>
+        <div id= "titleCard">
+         <h1>GABBLE</h1>
+         <h2><i>get your gab on!</i> </h2>
+        </div>
+      <h4>LOGIN</h4>
+
 
       <form method="POST" action= "/login" id="logInForm">
-         <input type="text" name="username" placeholder="Enter your Username">
-         <input type="password" name="password" placeholder="Enter your Password">
-         <input type="submit" name="submit" value="LOG IN">
+         <input type="text" name="username" placeholder="Enter your Username" id="username">
+         <input type="password" name="password" placeholder="Enter your Password" id="password">
+         <input type="submit" name="submit" value="I'M BACK" id="imback">
       </form>
 
 
       <form method="POST" action="to-signUp" name="to-signUp">
-         <label name="signup"> Not a user? Sign up with us here:
-         <input type="submit" name="to-signup" value="Take Me to Sign Up!">
+         <label name="signup"> <i>NEW TO GABBLE?</i> Sign up with us here: </label>
+         <input type="submit" name="to-signup" value="I'M NEW" id="imnew">
       </form>
 
      </div>

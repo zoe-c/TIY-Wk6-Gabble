@@ -10,7 +10,6 @@ const sequelize = require('sequelize');
 const models = require("./models");
 // const authenticate = require('./auth.js');
 
-
 // app
 const app= express();
 
@@ -144,13 +143,19 @@ app.post('/signUp', function (req, res) {
       username: req.body.username,
       password: req.body.password1
    });
-         gabber.save().then(function(req, res, next){
-            console.log(gabbers);
-            next();
-         });
+   gabber.save().then(function(req, res, next){
+      console.log(username);
+      next();
+   });
          // res.redirect('/');
-         res.send("new gabber added!");
+         res.send("new gabber added!")
+         // res.redirect('/userHome/:username');
 });
+
+app.get('userHome/:username', function(req,res){
+   let username = req.body.username;
+   console.log(username);
+})
 
 
 
