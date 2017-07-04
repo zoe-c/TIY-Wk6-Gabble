@@ -8,6 +8,8 @@ const mustacheExpress = require('mustache-express');
 // -----------------------
 const sequelize = require('sequelize');
 const models = require("./models");
+// const authenticate = require('./auth.js');
+
 
 // app
 const app= express();
@@ -28,11 +30,31 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // validation
 app.use(expressValidator());
 
-// sequelize.authenticate().then(() => {
-//     console.log('Connection has been established successfully.');
-//   }).catch(err => {
-//     console.error('Unable to connect to the database:', err);
-//   });
+// sessions
+app.use(session({
+  secret: 'ssshhh',
+  resave: false,
+  saveUninitialized: true
+}));
+
+// work on auth code/ validation for login
+//auth function
+// function authenticate(req, username, password) {
+//    // console.log('authenticating');
+//    var authenticatedUser = models.gabber.findOne().then(function(gabber){
+//       console.log(gabber);
+//     if (username === gabber.username && password === gabber.password) {
+//       return req.session.authenticated = true;
+//       console.log('User and Password Authenticated!');
+//     } else {
+//       console.log('Unauthorized!');
+//       return req.session.autheticated = false;
+//       // res.redirect('/login');
+//      }
+//    });
+//    console.log(req.session);
+//    return req.session;
+// }
 
 
 // test to see if post and user connect
@@ -74,20 +96,64 @@ app.get('/', function(req,res){
    res.render('index');
 });
 
-app.get('/userList', function (req,res) {
-   models.gabber.findAll().then(function(gabbers){
-      res.render('userList', {gabbers: gabbers});
-   });
-});
 
+ // work on auth code/ validation for login
+// app.post('/login', function (req, res){
+//    let username = req.body.username;
+//    let password = req.body.password;
+//    // console.log(username);
+//    // console.log(password);
+//    if (username === models.gabber.username && password === models.gabber.password){
+//       console.log(models.gabber.username);
+//       console.log("Authenticated GABBER")
+//    };
+//    res.end();
+//    //
+//    // authenticate(req, username, password);
+//    // if (req.session && req.session.authenticated) {
+//    //       // console.log("you are authenticated!");
+//    //       // res.render('index', {username : username})
+//    //       console.log('Authenticated User ' + username)
+//    //    } else {
+//    //       console.log('Unauthorized!')
+//    //       res.redirect('/');
+//    //    };
+// })
+
+
+// successful render test for "gabbers"// "users"
+// app.get('/userList', function (req,res) {
+//    models.gabber.findAll().then(function(gabbers){
+//       res.render('userList', {gabbers: gabbers});
+//    });
+// });
+
+// link to sign up page. login is on root.
 app.post('/to-signUp', function (req,res) {
    res.redirect('/signUp');
 });
 
+// render sign up form
 app.get('/signUp', function (req,res) {
    res.render('signUp');
 });
 
-app.listen(3000, function(){
+// add user to "gabbers" upon sign up. log username/ pw
+app.post('/signUp', function (req, res) {
+   const gabber = models.gabber.build({
+      username: req.body.username,
+      password: req.body.password1
+   });
+         gabber.save().then(function(req, res, next){
+            console.log(gabbers);
+            next();
+         });
+         // res.redirect('/');
+         res.send("new gabber added!");
+});
+
+
+
+app.listen(3000, function() {
    console.log('Listening on port 3000!');
 });
