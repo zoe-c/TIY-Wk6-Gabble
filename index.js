@@ -57,6 +57,7 @@ app.post('/login', function (req,res){
 }).then(gabber => {
     if (gabber.password == password && gabber.username == username) {
       req.session.username = username;
+      req.session.gabberId = gabber.id;
       req.session.authenticated = true;
       res.redirect('/userHome');
     } else {
@@ -81,7 +82,6 @@ app.get('/signUp', function (req,res) {
    res.render('signUp');
 });
 
-// add user to "gabbers" on sign up. log username & pw
 app.post('/signUp', function (req, res) {
    const gabber = models.gabber.build({
       username: req.body.username,
@@ -97,13 +97,24 @@ app.post('/signUp', function (req, res) {
 });
 
 // -------------------------------------------------------------
-
 app.get('/userHome', function (req,res) {
    res.render('userHome', {username: req.session.username})
 });
 
 // -------------------------------------------------------------
-
+app.post('/postToGaggle', function (req, res) {
+   // console.log(req.session.gabberId);
+   const post = models.post.build({
+      title: req.body.gabTitle,
+      body: req.body.gabBody,
+      gabberId: req.session.gabberId
+   })
+   post.save().then(function (newPost) {
+      console.log(newPost);
+      res.redirect('/gaggle');
+   });
+});
+// -------------------------------------------------------------
 app.get('/gaggle', function (req,res) {
    models.post.findAll().then(function(posts) {
       res.render('gabbleGaggle', {posts: posts})

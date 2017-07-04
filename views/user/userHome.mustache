@@ -19,8 +19,9 @@
          <h1> Hey there, {{username}}  </h1>
          <hr>
          <br>
-         <form id="postForm" method="POST" action= "/gabbleGaggle">
-            <input type= "textarea" name= "gabPost" maxlength="140" placeholder= "Gab about it...">
+         <form id="postForm" method="POST" action= "/postToGaggle">
+            <input type="text" name="gabTitle" maxlength="20" placdholder= "Title">
+            <input type= "textarea" name= "gabBody" maxlength="140" placeholder= "Gab about it...">
             <input type= "submit" value="post">
          </form>
 
