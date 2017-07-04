@@ -1,21 +1,17 @@
-
-// function authenticate(req, username, password) {
-//    // console.log('authenticating');
-//    var authenticatedUser = models.gabbers.findOne(function (gabber) {
-//     if (username === gabber.username && password === gabber.password) {
-//       return req.session.authenticated = true;
-//       console.log('User and Password Authenticated!');
+// let username = req.body.username;
+//   let password = req.body.password;
+//
+//   models.user.findOne({
+//     where: {
+//       username: username
+//     }
+//   }).then(user => {
+//     if (user.password == password) {
+//       req.session.username = username;
+//       req.session.authenticated = true;
+//       res.redirect('/');
 //     } else {
-//       console.log('Unauthorized!');
-//       return req.session.autheticated = false;
-//       // res.redirect('/login');
-//      }
-//    });
-//    console.log(req.session);
-//    return req.session;
-// }
-
-
-// module.exports = {
-//    authenticate: authenticate
-// }
+//       res.redirect('/login');
+//     }
+//   })
+// })

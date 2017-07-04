@@ -8,6 +8,7 @@ const mustacheExpress = require('mustache-express');
 // -----------------------
 const sequelize = require('sequelize');
 const models = require("./models");
+// const userRouter = require('./routes/user')
 // const authenticate = require('./auth.js');
 
 // app
@@ -15,7 +16,7 @@ const app= express();
 
 // views
 app.engine('mustache', mustacheExpress());
-app.set('views', './views');
+app.set('views', ['./views', './views/user']);
 app.set('view engine', 'mustache');
 
 // styles
@@ -36,25 +37,7 @@ app.use(session({
   saveUninitialized: true
 }));
 
-// work on auth code/ validation for login
-//auth function
-// function authenticate(req, username, password) {
-//    // console.log('authenticating');
-//    var authenticatedUser = models.gabber.findOne().then(function(gabber){
-//       console.log(gabber);
-//     if (username === gabber.username && password === gabber.password) {
-//       return req.session.authenticated = true;
-//       console.log('User and Password Authenticated!');
-//     } else {
-//       console.log('Unauthorized!');
-//       return req.session.autheticated = false;
-//       // res.redirect('/login');
-//      }
-//    });
-//    console.log(req.session);
-//    return req.session;
-// }
-
+// app.use('/user', userRouter);
 
 // test to see if post and user connect
 // models.Posts.findOne({
@@ -64,17 +47,6 @@ app.use(session({
 //    }].then(function(Posts){
 //       console.log(Posts);
 //    })
-// });
-
-// create GABBER instance
-// const gabber = models.gabber.build({
-//    username: 'John',
-//    password: 'jpassword'
-// });
-//
-// gabber.save().then(function (newGabber) {
-//   console.log(newGabber);
-//   console.log(newGabber.id);
 // });
 
 // create POST instance
@@ -95,37 +67,33 @@ app.get('/', function(req,res){
    res.render('index');
 });
 
+app.post('/login', function (req,res){
+  let username = req.body.username;
+  let password = req.body.password;
 
- // work on auth code/ validation for login
-// app.post('/login', function (req, res){
-//    let username = req.body.username;
-//    let password = req.body.password;
-//    // console.log(username);
-//    // console.log(password);
-//    if (username === models.gabber.username && password === models.gabber.password){
-//       console.log(models.gabber.username);
-//       console.log("Authenticated GABBER")
-//    };
-//    res.end();
-//    //
-//    // authenticate(req, username, password);
-//    // if (req.session && req.session.authenticated) {
-//    //       // console.log("you are authenticated!");
-//    //       // res.render('index', {username : username})
-//    //       console.log('Authenticated User ' + username)
-//    //    } else {
-//    //       console.log('Unauthorized!')
-//    //       res.redirect('/');
-//    //    };
-// })
+  models.gabber.findOne({
+    where: {
+      username: username
+    }
+}).then(gabber => {
+    if (gabber.password == password) {
+      req.session.username = username;
+      req.session.authenticated = true;
+      res.redirect('/userHome');
+    } else {
+      req.session.authenticated = false;
+      console.log('unauthorized!');
+      res.redirect('/');
+    }
+  })
+  console.log(req.session);
+  return req.session;
+});
 
-
-// successful render test for "gabbers"// "users"
-// app.get('/userList', function (req,res) {
-//    models.gabber.findAll().then(function(gabbers){
-//       res.render('userList', {gabbers: gabbers});
-//    });
-// });
+app.get('/userHome', function (req,res) {
+   // console.log(req.session);
+   res.render('userHome')
+});
 
 // link to sign up page. login is on root.
 app.post('/to-signUp', function (req,res) {
@@ -151,13 +119,6 @@ app.post('/signUp', function (req, res) {
          res.send("new gabber added!")
          // res.redirect('/userHome/:username');
 });
-
-app.get('userHome/:username', function(req,res){
-   let username = req.body.username;
-   console.log(username);
-})
-
-
 
 app.listen(3000, function() {
    console.log('Listening on port 3000!');
