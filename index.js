@@ -8,6 +8,9 @@ const mustacheExpress = require('mustache-express');
 // -----------------------
 const sequelize = require('sequelize');
 const models = require("./models");
+// likefunction is linked properly, do not delete
+// const getTriggers = require('./likeFunction.js')
+
 // const userRouter = require('./routes/user')
 // const authenticate = require('./auth.js');
 
@@ -37,17 +40,10 @@ app.use(express.static('public'));
 
 // parser middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // validation
 app.use(expressValidator());
-
-// // sessions
-// app.use(session({
-//   secret: 'ssshhh',
-//   resave: false,
-//   saveUninitialized: true
-// }));
 
 // app.use('/user', userRouter);
 
@@ -60,12 +56,6 @@ app.use(expressValidator());
 // like.save().then(function (newLike) {
 //    console.log(newLike);
 // });
-
-
-
-
-
-
 
 // REQUESTS---------------------------------------------------------
 app.get('/', function(req,res){
@@ -152,6 +142,22 @@ app.get('/gaggle/', function (req,res) {
    });
 });
 
+
+// app.post('/like', function (req,res) {
+//    console.log(req.body.name);
+   // console.log(req.body[5]);
+   // var likePostId = req.body[1];
+   // const like = models.like.build({
+   //       status: true,
+   //       postId: likePostId
+   // });
+   //
+   // like.save().then(function (newLike) {
+   //    console.log(newLike);
+   // });
+
+
+});
 // app.post('/like', function (req,res) {
 //    // like instance
 //

@@ -21,7 +21,7 @@
             <div class="gabCard">
                <ul class="gabContent">
                   <!-- <li class="postId" >{{id}}</li>  -->
-                  <li class="gabTitle" id= {{id}}>{{title}}</li>
+                  <li class="gabTitle">{{title}}</li>
                   <li class="gabBody">{{body}}</li>
                   <li class="date">{{createdAt}}</li>
                   <li class="gabber">{{gabberId}}</li>
@@ -30,8 +30,10 @@
                   <!-- <li> like count. need to add</li> -->
                   <!--form for like button? somehow add to the count ^  -->
                </ul>
-               <form id="likeForm" method="POST" action= "/like">
-                  <input id="likeButton" type="submit" value="LIKE">
+               <form class="likeForm" method="POST" action= "/like">
+                  <!-- <button type="submit" class="likeButtons" name= {{id}}> LIKE </button> -->
+                  <!-- <input type="submit" value="LIKE" class="likeButtons" name= {{id}} > -->
+                  <input type="submit" class="likeButtons" name="likeButton" value= {{id}} > LIKE </input>
                </form>
             </div>
             {{/posts}}

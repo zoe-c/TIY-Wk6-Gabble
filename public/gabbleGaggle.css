@@ -92,14 +92,14 @@ h3 {
    font-weight: lighter;
 }
 
-#likeForm {
+.likeForm {
    width: 27vw;
    display: flex;
    justify-content: center;
    align-items: center;
 }
 
-#likeButton {
+.likeButtons {
    font-size: 1.25vw;
    padding: 1vw;
    border: solid black 1.5px;
