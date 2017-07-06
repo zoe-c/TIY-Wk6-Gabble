@@ -5,10 +5,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {});
   like.associate = function(models) {
      like.belongsTo(models.post, {as: 'post', foreignKey: 'postId'})
+     like.belongsTo(models.gabber, {as: 'gabber', foreignKey: 'gabberId'})
   }
   return like;
 };
-
-
-
-//   like.hasOne(models.gabber, {as: 'gabber', foreignKey: 'gabberId'})

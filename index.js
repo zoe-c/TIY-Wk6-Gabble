@@ -40,7 +40,7 @@ app.use(express.static('public'));
 
 // parser middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // validation
 app.use(expressValidator());
@@ -50,7 +50,8 @@ app.use(expressValidator());
 // // create LIKE instance
 // const like = models.like.build({
 //    status: true,
-//    postId: 4
+//    postId: 4,
+//    gabberId: 3
 // });
 //
 // like.save().then(function (newLike) {
@@ -142,22 +143,29 @@ app.get('/gaggle/', function (req,res) {
    });
 });
 
-
-// app.post('/like', function (req,res) {
-//    console.log(req.body.name);
+// like instance test
+app.post('/like', function (req,res) {
+   // console.log(req.body.likeButton);
    // console.log(req.body[5]);
    // var likePostId = req.body[1];
-   // const like = models.like.build({
-   //       status: true,
-   //       postId: likePostId
-   // });
-   //
-   // like.save().then(function (newLike) {
-   //    console.log(newLike);
-   // });
+   const like = models.like.build({
+         status: true,
+         postId: req.body.likeButton,
+         gabberId: req.session.gabberId
+   });
+
+   like.save().then(function (newLike) {
+      console.log(newLike);
+   });
 
 
 });
+
+
+
+
+
+
 // app.post('/like', function (req,res) {
 //    // like instance
 //
