@@ -9,15 +9,17 @@
       <div class="bodyWrap">
          <h1>SIGN UP</h1>
          <h2><i>join the gabble gaggle</i></h2>
-         <p>In the form below, please enter a username and password, then press submit.</p>
-         <p> The password and the confirmation must match to continue.</p>
-
-         <form method="POST" action= "/signUp" id="signUpForm">
-            Username: <input type="text" name="username" placeholder="Enter a username">
-            Password: <input type="password" name="password1" id="password1" placeholder="Enter a password">
-            Confirm Password: <input type="password" name="password2" id="password2" placeholder="Confirm password above by entering it again here">
-            <input type="submit" name="signUp" value="Sign Me Up!">
-         </form>
+         <div id="signUpDiv">
+            <form method="POST" action= "/signUp" id="signUpForm">
+                <label for="username">USERNAME :</label>
+                <input type="text" name="username" id="username" placeholder="Enter a username">
+                <label for="username">PASSWORD :</label>
+                <input type="password" name="password1" id="password1" placeholder="Enter a password">
+                <label for="username">CONFIRM PASSWORD :</label>
+                <input type="password" name="password2" id="password2" placeholder="Retype password">
+               <input type="submit" name="signUp" value="SIGN ME UP" id="signUp">
+            </form>
+         </div>
          <!--script below src= https://www.sitepoint.com/using-the-html5-constraint-api-for-form-validation/ -->
          <script type="text/javascript">
             window.onload = function () {

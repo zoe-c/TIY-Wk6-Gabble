@@ -42,11 +42,15 @@ html {
 h1 {
    font-size: 15vw;
    padding: 0;
+   line-height: 90%;
+   /*border: solid black 1px;*/
 }
 
 h2 {
    font-size: 5vw;
    font-weight: lighter;
+   /*padding: 0;*/
+   color: darkgrey;
    /*border: solid black 1px;*/
 }
 /*---------------------------------*/
@@ -58,14 +62,18 @@ h2 {
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   border: solid black 1px;
+   border: solid black 1.5px;
    border-radius: 4px;
 }
 
 h4 {
    /*color: lightgrey;*/
    text-align: center;
-   font-size: 4vw;
+   font-size: 3vw;
+   padding-top: 3vw;
+   width: 60vw;
+   border-top: solid black 1.5px;
+   /*border-radius: 4px;*/
 }
 #loginForm {
    width: 60vw;

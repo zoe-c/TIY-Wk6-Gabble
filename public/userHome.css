@@ -10,6 +10,7 @@
   /*font-size: 100%;*/
   vertical-align: baseline;
   background: transparent;
+  /*border: solid black 1px;*/
 }
 
 html {
@@ -20,10 +21,80 @@ html {
 
 .bodyWrap {
    width: 100vw;
-   height: 96vh;
+   height: 100%;
    display: flex;
    flex-direction: column;
    /*justify-content: space-around;*/
    align-items: center;
-   border: solid black 3px;
+   border: solid black 1px;
+}
+
+nav {
+   width: 100vw;
+   height: 6vw;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   align-items: center;
+   border: solid black 1px;
+}
+
+a {
+   font-size: 2vw;
+   color: black;
+   padding: 1vw;
+   text-decoration: none;
+}
+/*-----------------------------------*/
+
+h1 {
+   margin-top: 5vw;
+   font-size: 8vw;
+}
+
+h3 {
+   margin-top: 3vw;
+   font-size: 4vw;
+   font-weight: lighter;
+}
+
+#postForm {
+   width: 65vw;
+   height: 65vw;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   border: solid black 1.5px;
+   border-radius: 4px;
+}
+
+#gabTitle {
+   width: 75%;
+   height: 10%;
+   font-size: 3vw;
+   font-weight: lighter;
+   text-align: center;
+   border: solid black 1px;
+   border-radius: 3px;
+}
+
+#gabBody {
+   width: 75%;
+   height: 50%;
+   margin-top: 1vw;
+   font-size: 3vw;
+   font-weight: lighter;
+   text-align: center;
+   border: solid black 1px;
+   border-radius: 3px;
+}
+
+#postButton {
+   width: 75%;
+   height: 10%;
+   font-size: 3vw;
+   margin-top: 5vw;
+   border: solid black 1px;
+   border-radius: 3px;
 }

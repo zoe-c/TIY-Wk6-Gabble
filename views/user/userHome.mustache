@@ -3,26 +3,26 @@
 <html>
    <head>
       <meta charset="utf-8">
-       <link rel="stylesheet" href="userHome.css">
+      <link rel="stylesheet" href="../userHome.css">
       <title>GABBLE: Home</title>
    </head>
    <body>
-      <!-- <nav>
-         <a href="/html/">HTML</a>
-         need links:
-            community/ (all posts view)/ "Gabble Gaggle"
-            your posts/likes
-            posts you've liked?
-            logout/
-      </nav> -->
       <div class="bodyWrap">
-         <h1> Hey there, {{username}}  </h1>
-         <hr>
+      <nav>
+         <a href="/gaggle/">GAGGLE GABS</a>
+         <a href="/your-gabs/">YOUR GABS</a>
+         <a href="/gab-bye">LOGOUT</a>
+         <!-- extra:
+            your likes/ posts you've liked? -->
+      </nav>
+
+         <h1> Hey there, {{username}} . </h1>
+         <h3> What's on your mind? </h3>
          <br>
          <form id="postForm" method="POST" action= "/postToGaggle">
-            <input type="text" name="gabTitle" maxlength="20" placdholder= "Title">
-            <input type= "textarea" name= "gabBody" maxlength="140" placeholder= "Gab about it...">
-            <input type= "submit" value="post">
+            <input type="text" name="gabTitle" maxlength="20" placeholder= "Title" id= "gabTitle">
+            <input type= "textarea" name= "gabBody" maxlength="140" placeholder= "Gab about it..." id= "gabBody">
+            <input type= "submit" value="POST" id= "postButton">
          </form>
 
          <div id="fillerDiv"></div>

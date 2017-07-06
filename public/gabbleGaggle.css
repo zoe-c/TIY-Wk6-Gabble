@@ -1,0 +1,107 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+html {
+   width: 100vw;
+   /*min-width: 700px;*/
+   height: 100%;
+   font-family: sans-serif;
+}
+
+.bodyWrap {
+   width: 100vw;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   /*border: solid black 1px;*/
+}
+
+nav {
+   width: 100vw;
+   height: 6vw;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   align-items: center;
+   border: solid black 1px;
+}
+
+a {
+   font-size: 2vw;
+   color: black;
+   padding: 1vw;
+   text-decoration: none;
+}
+/*-----------------------------------*/
+h1 {
+   margin-top: 5vw;
+   font-size: 8vw;
+}
+
+h3 {
+   margin-top: 2vw;
+   font-size: 4vw;
+   font-weight: lighter;
+}
+
+/*-------------------------------------*/
+#allGabs {
+   width: 70vw;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding: 2vw;
+   border: solid black 1.5px;
+   border-radius: 4px;
+}
+
+.gabCard {
+   width: 60vw;
+   height: 12vw;
+   padding: 1vw;
+   margin: 1vw;
+   display: flex;
+   flex-flow: wrap row;
+   justify-content: center;
+   align-items: center;
+   font-size: 1.5vw;
+   border: solid black 1px;
+   border-radius: 3px;
+}
+.gabContent {
+   width: 27vw;
+   list-style-type: none;
+   /*border: solid black 1px;*/
+}
+
+.gabTitle {
+   font-weight: bolder;
+}
+
+.date{
+   font-size: 1vw;
+   font-weight: lighter;
+}
+
+#likeForm {
+   width: 27vw;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+#likeButton {
+   font-size: 1.25vw;
+   padding: 1vw;
+   border: solid black 1.5px;
+   border-radius: 2.5px;
+}

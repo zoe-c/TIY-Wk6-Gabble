@@ -19,6 +19,18 @@ app.engine('mustache', mustacheExpress());
 app.set('views', ['./views', './views/user']);
 app.set('view engine', 'mustache');
 
+// Thomas* advice>> SESSIONS HERE ABOVE routes
+// sessions
+app.use(session({
+  secret: 'ssshhh',
+  resave: false,
+  saveUninitialized: true
+  // username: '';
+  // gabberId: '';
+
+}));
+
+
 // styles
 app.use(express.static('public'));
 
@@ -30,14 +42,29 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // validation
 app.use(expressValidator());
 
-// sessions
-app.use(session({
-  secret: 'ssshhh',
-  resave: false,
-  saveUninitialized: true
-}));
+// // sessions
+// app.use(session({
+//   secret: 'ssshhh',
+//   resave: false,
+//   saveUninitialized: true
+// }));
 
 // app.use('/user', userRouter);
+
+// // create LIKE instance
+// const like = models.like.build({
+//    status: true,
+//    postId: 4
+// });
+//
+// like.save().then(function (newLike) {
+//    console.log(newLike);
+// });
+
+
+
+
+
 
 
 // REQUESTS---------------------------------------------------------
@@ -59,14 +86,14 @@ app.post('/login', function (req,res){
       req.session.username = username;
       req.session.gabberId = gabber.id;
       req.session.authenticated = true;
-      res.redirect('/userHome');
+      res.redirect('/userHome/');
     } else {
       req.session.authenticated = false;
       console.log('unauthorized!');
       res.redirect('/');
     }
   })
-  console.log(req.session);
+  // console.log(req.session);
   return req.session;
 });
 
@@ -97,7 +124,8 @@ app.post('/signUp', function (req, res) {
 });
 
 // -------------------------------------------------------------
-app.get('/userHome', function (req,res) {
+app.get('/userHome/', function (req,res) {
+   // console.log("SESSION TEST: " + req.session.gabberId);
    res.render('userHome', {username: req.session.username})
 });
 
@@ -110,23 +138,44 @@ app.post('/postToGaggle', function (req, res) {
       gabberId: req.session.gabberId
    })
    post.save().then(function (newPost) {
+      // req.session.postId = newPost.id;
+      // console.log("POST ID STORED IN SESSION : " + req.session.postId )
       console.log(newPost);
-      res.redirect('/gaggle');
+      res.redirect('/gaggle/');
    });
 });
-// -------------------------------------------------------------
-app.get('/gaggle', function (req,res) {
+// ------------------------------------------------------------
+app.get('/gaggle/', function (req,res) {
+   // console.log("SESSION TEST: " + req.session.gabberId);
    models.post.findAll().then(function(posts) {
       res.render('gabbleGaggle', {posts: posts})
    });
-
 });
+
+// app.post('/like', function (req,res) {
+//    // like instance
+//
+//    // const like = models.like.build({
+//    //    status: true,
+//    //    postId:
+//    // });
+//    //
+//    // like.save().then(function (newLike) {
+//    //    console.log(newLike);
+//    // });
+// })
 
 // -----------------------------------------------------------
 app.post('/logout', function (req,res) {
    req.session.destroy();
    // console.log("bye!")
-   res.redirect('/');
+   res.redirect('/gab-bye');
+   // res.redirect('/');
+});
+
+app.get('/gab-bye', function (req,res) {
+   req.session.destroy();
+   res.send('See ya later!');
 });
 
 app.listen(3000, function() {

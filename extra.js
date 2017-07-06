@@ -49,3 +49,25 @@
 // like.save().then(function (newLike) {
 //    console.log(newLike);
 // });
+
+
+
+
+// function for grabbing post id 
+
+
+
+
+
+
+
+
+
+//-----------------------------THOMAS' EXAMPLE
+// app.use(session){
+//    codeblock of stuff that goes in your session.
+//    secret, maxage etc
+// }
+
+// MAKE SURE YOUR SESSION IS CREATED BEFORE YOUR ROUTES!!
+// BEFORE YOUR VALIDATOR, BEFORE PARSER, BEFORE ROUTER. (he has it right underneath the views)

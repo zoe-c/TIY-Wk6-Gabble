@@ -8,3 +8,7 @@ module.exports = function(sequelize, DataTypes) {
   }
   return like;
 };
+
+
+
+//   like.hasOne(models.gabber, {as: 'gabber', foreignKey: 'gabberId'})

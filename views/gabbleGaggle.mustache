@@ -2,29 +2,44 @@
 <html>
    <head>
       <meta charset="utf-8">
-       <link rel="stylesheet" href="styles.css">
+       <link rel="stylesheet" href="../gabbleGaggle.css">
       <title>GABBLE: The Gaggle</title>
    </head>
    <body>
       <div class="bodyWrap">
-         <h1>The Gaggle</h1>
-         <p> (community posts) </p>
+         <nav>
+            <a href="/userHome/">CREATE NEW GAB</a>
+            <a href="/your-gabs/">YOUR GABS</a>
+            <a href="/gab-bye">LOGOUT</a>
+            <!-- extra:
+               your likes/ posts you've liked? -->
+         </nav>
+         <h1>The Gabble Gaggle</h1>
+         <h3>What's the gab?</h3>
+         <div id="allGabs">
+            {{#posts}}
+            <div class="gabCard">
+               <ul class="gabContent">
+                  <!-- <li class="postId" >{{id}}</li>  -->
+                  <li class="gabTitle" id= {{id}}>{{title}}</li>
+                  <li class="gabBody">{{body}}</li>
+                  <li class="date">{{createdAt}}</li>
+                  <li class="gabber">{{gabberId}}</li>
+                  <!-- <li class="gabber">{{author}}</li> -->
+                  <!-- <li>{{gabberName}}</li> -->
+                  <!-- <li> like count. need to add</li> -->
+                  <!--form for like button? somehow add to the count ^  -->
+               </ul>
+               <form id="likeForm" method="POST" action= "/like">
+                  <input id="likeButton" type="submit" value="LIKE">
+               </form>
+            </div>
+            {{/posts}}
+         </div>
 
-         {{#posts}}
-         <ul>
-            <li>{{title}}</li>
-            <li>{{body}}</li>
-            <li>{{createdAt}}</li>
-            <li>{{gabberId}}</li>
-            <!-- <li>{{gabberName}}</li> -->
-            <!-- <li> like count. need to add</li> -->
-            <!--form for like button? somehow add to the count ^  -->
-         </ul>
-         {{/posts}}
 
-
-         <form id="logoutForm" method="POST" action= "/logout">
-            <input type= "submit" value="logout">
+         <form id="logoutForm" method="POST" action="/logout">
+            <input type="submit" value="logout">
          </form>
 
       </div>

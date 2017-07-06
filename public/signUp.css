@@ -26,10 +26,56 @@ html {
    flex-direction: column;
    align-items: center;
 }
+
 h1 {
-   font-size: 15vw;
+   margin-top: 5vw;
+   font-size: 10vw;
 }
+
 h2 {
    font-size: 5vw;
    font-weight: lighter;
+}
+
+/*----------------------------------*/
+#signUpDiv {
+   width: 65vw;
+   height: 55vw;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   border: solid black 1.5px;
+   border-radius: 4px;
+}
+
+#signUpForm {
+   width: 60vw;
+   height: 80%;
+   display: flex;
+   flex-flow: wrap column;
+   justify-content: space-around;
+   align-items: center;
+   /*border: solid black 1px;*/
+}
+
+#username, #password1, #password2, #signUp {
+   width: 75%;
+   height: 5vw;
+   text-align: center;
+   font-size: 1.75vw;
+   border-radius: 3px;
+   border: solid black 1px;
+}
+
+#signUp {
+   margin-top: 3vw;
+   font-weight: bolder;
+}
+
+label {
+   width: 75%;
+   /*text-align: center;*/
+   font-size: 1.75vw;
+   font-weight: bolder;
 }
