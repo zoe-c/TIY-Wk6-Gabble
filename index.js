@@ -157,8 +157,6 @@ app.get('/gaggle/', function (req,res) {
 // like instance test
 app.post('/like', function (req,res) {
    // console.log(req.body.likeButton);
-   // console.log(req.body[5]);
-   // var likePostId = req.body[1];
    const like = models.like.build({
          status: true,
          postId: req.body.likeButton,
@@ -187,6 +185,10 @@ app.post('/like', function (req,res) {
             as: 'gabber'
          }
       ]
+      // ASK HOW TO ORDER THIS OR RENDER THIS BY THE POST COLLECTING ALL THE LIKES ASSOCIATED WITH IT, INSTEAD OF MY THE LIKES.
+      // THIS IS RENDERING ALL LIKES ASSOCIATED WITH THE SAME POST SEPERATELY.
+
+      // order: [['id', 'DESC']]
    }).then(function(likes) {
       console.log(likes);
       res.render('likedBy', {likes: likes})

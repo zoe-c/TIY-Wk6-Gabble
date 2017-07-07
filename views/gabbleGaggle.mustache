@@ -12,8 +12,6 @@
             <a href="/your-gabs/">YOUR GABS</a>
             <a href="/likedBy">LIKES</a>
             <a href="/gab-bye">LOGOUT</a>
-            <!-- extra:
-               your likes/ posts you've liked? -->
          </nav>
          <h1>The Gabble Gaggle</h1>
          <h3>What's the gab?</h3>
@@ -21,14 +19,12 @@
             {{#posts}}
             <div class="gabCard">
                <ul class="gabContent">
-                  <!-- <li class="postId" >{{id}}</li>  -->
                   <li class="gabTitle">{{title}}</li>
                   <li class="gabBody">{{body}}</li>
                   <br>
                   <li class="gabber">Posted by: {{gabber.username}}</li>
                   <li class="date">{{createdAt}}</li>
                   <!-- <li> like count. need to add</li> -->
-                  <!--form for like button? somehow add to the count ^  -->
                </ul>
                <form class="likeForm" method="POST" action= "/like">
                   <button type="submit" class="likeButtons" name="likeButton" value="{{id}}">LIKE</button>
