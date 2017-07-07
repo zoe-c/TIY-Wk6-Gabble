@@ -161,7 +161,6 @@ app.post('/like', function (req,res) {
    // models.like.findAll().then(
    like.save().then(function (newLike) {
       console.log(newLike);
-      console.log("User: " + gabberId + " liked this post: " + postId)
    });
    // eventually, alert that they liked the post and then send them back to the gaggle.
    // add link to view likes
@@ -170,24 +169,24 @@ app.post('/like', function (req,res) {
 
 // -----------------------------------------------------
  app.get('/likedBy', function (req,res) {
-    models.like.findAll().then(function(likes) {
+    models.like.findAll({
+      include: [
+         {
+            model: models.post,
+            as: 'post'
+         },
+         {
+            model: models.gabber,
+            as: 'gabber'
+         }
+      ]
+   }).then(function(likes) {
+      console.log(likes);
       res.render('likedBy', {likes: likes})
     });
-    //
-   //  models.like.findAll().then(
-   //    models.post.findAll({where:{id: models.likes.postId}}).then(
-   //       res.render('likedBy', {likes: likes, posts: posts});
-   //    ));
+
 
 });
-
-   //  models.like.findAll().then( models.post.findAll( {where:
-   // {
-   //    id: models.like.postId
-   // }}).then(function(likes, posts) {
-   //    // console.log(title);
-   //    res.render('likedBy', {likes:likes, posts:posts})
-   // }))});
 
 // -----------------------------------------------------------
 app.post('/logout', function (req,res) {

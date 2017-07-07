@@ -15,11 +15,10 @@
       </nav>
       {{#likes}}
       <ul class="likes">
-         <li>Post: {{postId}}</li>
-         {{#posts}}
-            <li>{{title}}</li>
-         {{/posts}}
-         <li>Was liked by User: {{gabberId}}</li>
+
+            <li>{{post.title}}</li>
+
+         <li>Was liked by User: {{gabber.username}}</li>
       </ul>
       <br>
       {{/likes}}
