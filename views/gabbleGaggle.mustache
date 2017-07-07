@@ -26,6 +26,11 @@
                   <li class="date">{{createdAt}}</li>
                   <!-- <li> like count. need to add</li> -->
                </ul>
+
+               <!-- <form class="deletePostForm" method="POST" action= "/delete">
+                  <button type="submit" class="deletePost" name="likeButton" value="{{id}}">LIKE</button>
+               </form> -->
+
                <form class="likeForm" method="POST" action= "/like">
                   <button type="submit" class="likeButtons" name="likeButton" value="{{id}}">LIKE</button>
                </form>

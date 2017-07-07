@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+       <!-- <link rel="stylesheet" href="../gabbleGaggle.css"> -->
+      <title>GABBLE: Your Gabs</title>
+   </head>
+   <body>
+      <div class="bodyWrap">
+         <nav>
+            <a href="/gaggle/">GAGGLE GABS</a>
+            <a href="/userHome/">CREATE NEW GAB</a>
+            <a href="/likedBy">LIKES</a>
+            <a href="/gab-bye">LOGOUT</a>
+         </nav>
+         <h1>Your Gabs</h1>
+         <div id="yourGabs">
+            {{#posts}}
+            <div class="gabCard">
+               <ul class="gabContent">
+                  <li class="gabTitle">{{title}}</li>
+                  <li class="gabBody">{{body}}</li>
+                  <br>
+                  <li class="date">{{createdAt}}</li>
+               </ul>
+               <form class="deletePostForm" method="POST" action= "/delete">
+                  <button type="submit" class="deletePost" name="deleteButton" value="{{id}}">DELETE</button>
+               </form>
+            </div>
+            {{/posts}}
+         </div>
+         <!-- <form id="logoutForm" method="POST" action="/logout">
+            <input type="submit" value="logout">
+         </form> -->
+
+      </div>
+   </body>
+</html>

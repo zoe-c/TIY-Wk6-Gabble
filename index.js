@@ -185,19 +185,59 @@ app.post('/like', function (req,res) {
             as: 'gabber'
          }
       ]
-      // ASK HOW TO ORDER THIS OR RENDER THIS BY THE POST COLLECTING ALL THE LIKES ASSOCIATED WITH IT, INSTEAD OF MY THE LIKES.
+      // ASK HOW TO ORDER THIS OR RENDER THIS BY THE POST COLLECTING ALL THE LIKES ASSOCIATED WITH IT, INSTEAD OF BY THE LIKES.
       // THIS IS RENDERING ALL LIKES ASSOCIATED WITH THE SAME POST SEPERATELY.
-
-      // order: [['id', 'DESC']]
    }).then(function(likes) {
       console.log(likes);
       res.render('likedBy', {likes: likes})
     });
 
-
 });
 
 // -----------------------------------------------------------
+// adding delete feature
+app.get('/your-gabs/', function (req,res) {
+   models.post.findAll({
+      where: {
+         gabberId: req.session.gabberId
+      }
+   }).then(function(posts) {
+      res.render('yourPosts', {posts: posts})
+   });
+});
+
+app.post('/delete', function(req,res) {
+   models.like.destroy({
+     where: {
+       postId: req.body.deleteButton
+     }
+  }).then(
+    models.post.destroy({
+         where: {
+            id: req.body.deleteButton
+         }
+      })).then(
+         res.redirect('/your-gabs/'));
+
+});
+
+
+
+// app.post('/delete', function(req,res) {
+//    models.post.destroy({
+//   where: {
+//     id: req.body.deleteButton
+//   }
+// }).then(function(req,res) {
+//    console.log("check if it worked!");
+//    // res.redirect('/your-gabs/');
+// }).catch(function(err){
+//    console.log('OOPS. try again.')
+// });
+// res.redirect('/your-gabs/');
+// });
+
+// ---------------------------------------------------------
 app.post('/logout', function (req,res) {
    req.session.destroy();
    // console.log("bye!")
