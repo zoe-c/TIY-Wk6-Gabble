@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" href="styles.css">
+      <title>likes-samp-page</title>
+   </head>
+   <body>
+      <nav>
+         <a href="/gaggle">GAGGLE GABS</a>
+         <a href="/userHome/">CREATE NEW GAB</a>
+         <a href="/gab-bye">LOGOUT</a>
+         <!-- extra:
+            your likes/ posts you've liked? -->
+      </nav>
+      {{#likes}}
+      <ul class="likes">
+         <li>Post: {{postId}}</li>
+         {{#posts}}
+            <li>{{title}}</li>
+         {{/posts}}
+         <li>Was liked by User: {{gabberId}}</li>
+      </ul>
+      <br>
+      {{/likes}}
+
+   </body>
+</html>

@@ -127,6 +127,7 @@ app.post('/postToGaggle', function (req, res) {
       title: req.body.gabTitle,
       body: req.body.gabBody,
       gabberId: req.session.gabberId
+      // need to pull out username instead
    })
    post.save().then(function (newPost) {
       // req.session.postId = newPost.id;
@@ -138,6 +139,9 @@ app.post('/postToGaggle', function (req, res) {
 // ------------------------------------------------------------
 app.get('/gaggle/', function (req,res) {
    // console.log("SESSION TEST: " + req.session.gabberId);
+   // NEED: add like count to posts
+   // IDEA: add link around title to switch to a solo page of this post,
+   // on that page, you will list the names of who all liked that post
    models.post.findAll().then(function(posts) {
       res.render('gabbleGaggle', {posts: posts})
    });
@@ -153,31 +157,37 @@ app.post('/like', function (req,res) {
          postId: req.body.likeButton,
          gabberId: req.session.gabberId
    });
-
+   // if they've already liked the post, do not save it.
+   // models.like.findAll().then(
    like.save().then(function (newLike) {
       console.log(newLike);
+      console.log("User: " + gabberId + " liked this post: " + postId)
    });
+   // eventually, alert that they liked the post and then send them back to the gaggle.
+   // add link to view likes
+   res.redirect('/gaggle/');
+});
 
+// -----------------------------------------------------
+ app.get('/likedBy', function (req,res) {
+    models.like.findAll().then(function(likes) {
+      res.render('likedBy', {likes: likes})
+    });
+    //
+   //  models.like.findAll().then(
+   //    models.post.findAll({where:{id: models.likes.postId}}).then(
+   //       res.render('likedBy', {likes: likes, posts: posts});
+   //    ));
 
 });
 
-
-
-
-
-
-// app.post('/like', function (req,res) {
-//    // like instance
-//
-//    // const like = models.like.build({
-//    //    status: true,
-//    //    postId:
-//    // });
-//    //
-//    // like.save().then(function (newLike) {
-//    //    console.log(newLike);
-//    // });
-// })
+   //  models.like.findAll().then( models.post.findAll( {where:
+   // {
+   //    id: models.like.postId
+   // }}).then(function(likes, posts) {
+   //    // console.log(title);
+   //    res.render('likedBy', {likes:likes, posts:posts})
+   // }))});
 
 // -----------------------------------------------------------
 app.post('/logout', function (req,res) {
