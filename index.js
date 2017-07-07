@@ -138,11 +138,18 @@ app.post('/postToGaggle', function (req, res) {
 });
 // ------------------------------------------------------------
 app.get('/gaggle/', function (req,res) {
-   // console.log("SESSION TEST: " + req.session.gabberId);
    // NEED: add like count to posts
    // IDEA: add link around title to switch to a solo page of this post,
    // on that page, you will list the names of who all liked that post
-   models.post.findAll().then(function(posts) {
+   models.post.findAll({
+      order: [['id', 'DESC']],
+      include: [
+         {
+            model: models.gabber,
+            as: 'gabber'
+         }
+      ]
+   }).then(function(posts) {
       res.render('gabbleGaggle', {posts: posts})
    });
 });

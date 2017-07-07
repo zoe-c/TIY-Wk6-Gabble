@@ -24,15 +24,14 @@
                   <!-- <li class="postId" >{{id}}</li>  -->
                   <li class="gabTitle">{{title}}</li>
                   <li class="gabBody">{{body}}</li>
+                  <br>
+                  <li class="gabber">Posted by: {{gabber.username}}</li>
                   <li class="date">{{createdAt}}</li>
-                  <li class="gabber">{{gabberId}}</li>
-                  <!-- <li class="gabber">{{author}}</li> -->
-                  <!-- <li>{{gabberName}}</li> -->
                   <!-- <li> like count. need to add</li> -->
                   <!--form for like button? somehow add to the count ^  -->
                </ul>
                <form class="likeForm" method="POST" action= "/like">
-                  <input type="submit" class="likeButtons" name="likeButton" value="{{id}}"> LIKE </input>
+                  <button type="submit" class="likeButtons" name="likeButton" value="{{id}}">LIKE</button>
                </form>
             </div>
             {{/posts}}
