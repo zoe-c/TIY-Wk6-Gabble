@@ -8,11 +8,7 @@ const mustacheExpress = require('mustache-express');
 // -----------------------
 const sequelize = require('sequelize');
 const models = require("./models");
-// likefunction is linked properly, do not delete
-// const getTriggers = require('./likeFunction.js')
 
-// const userRouter = require('./routes/user')
-// const authenticate = require('./auth.js');
 
 // app
 const app= express();
@@ -22,14 +18,11 @@ app.engine('mustache', mustacheExpress());
 app.set('views', ['./views', './views/user']);
 app.set('view engine', 'mustache');
 
-// Thomas* advice>> SESSIONS HERE ABOVE routes
-// sessions
+//SESSIONS ABOVE routes
 app.use(session({
   secret: 'ssshhh',
   resave: false,
   saveUninitialized: true
-  // username: '';
-  // gabberId: '';
 
 }));
 
@@ -45,18 +38,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // validation
 app.use(expressValidator());
 
-// app.use('/user', userRouter);
-
-// // create LIKE instance
-// const like = models.like.build({
-//    status: true,
-//    postId: 4,
-//    gabberId: 3
-// });
-//
-// like.save().then(function (newLike) {
-//    console.log(newLike);
-// });
 
 // REQUESTS---------------------------------------------------------
 app.get('/', function(req,res){
@@ -84,7 +65,6 @@ app.post('/login', function (req,res){
       res.redirect('/');
     }
   })
-  // console.log(req.session);
   return req.session;
 });
 
@@ -110,35 +90,27 @@ app.post('/signUp', function (req, res) {
       next();
    });
          res.redirect('/');
-         // res.send("new gabber added!")
-         // res.redirect('/userHome/:username');
 });
 
 // -------------------------------------------------------------
 app.get('/userHome/', function (req,res) {
-   // console.log("SESSION TEST: " + req.session.gabberId);
    res.render('userHome', {username: req.session.username})
 });
 
 // -------------------------------------------------------------
 app.post('/postToGaggle', function (req, res) {
-   // console.log(req.session.gabberId);
    const post = models.post.build({
       title: req.body.gabTitle,
       body: req.body.gabBody,
       gabberId: req.session.gabberId
-      // need to pull out username instead
    })
    post.save().then(function (newPost) {
-      // req.session.postId = newPost.id;
-      // console.log("POST ID STORED IN SESSION : " + req.session.postId )
       console.log(newPost);
       res.redirect('/gaggle/');
    });
 });
 // ------------------------------------------------------------
 app.get('/gaggle/', function (req,res) {
-   // NEED: add like count to posts
    // IDEA: add link around title to switch to a solo page of this post,
    // on that page, you will list the names of who all liked that post
    models.post.findAll({
@@ -156,19 +128,16 @@ app.get('/gaggle/', function (req,res) {
 
 // like instance test
 app.post('/like', function (req,res) {
-   // console.log(req.body.likeButton);
    const like = models.like.build({
          status: true,
          postId: req.body.likeButton,
          gabberId: req.session.gabberId
    });
-   // if they've already liked the post, do not save it.
-   // models.like.findAll().then(
+   // if they've already liked the post, do not save it. need to add function before the save below.
    like.save().then(function (newLike) {
       console.log(newLike);
    });
    // eventually, alert that they liked the post and then send them back to the gaggle.
-   // add link to view likes
    res.redirect('/gaggle/');
 });
 
@@ -185,7 +154,6 @@ app.post('/like', function (req,res) {
             as: 'gabber'
          }
       ]
-      // ASK HOW TO ORDER THIS OR RENDER THIS BY THE POST COLLECTING ALL THE LIKES ASSOCIATED WITH IT, INSTEAD OF BY THE LIKES.
       // THIS IS RENDERING ALL LIKES ASSOCIATED WITH THE SAME POST SEPERATELY.
    }).then(function(likes) {
       console.log(likes);
@@ -221,28 +189,10 @@ app.post('/delete', function(req,res) {
 
 });
 
-
-
-// app.post('/delete', function(req,res) {
-//    models.post.destroy({
-//   where: {
-//     id: req.body.deleteButton
-//   }
-// }).then(function(req,res) {
-//    console.log("check if it worked!");
-//    // res.redirect('/your-gabs/');
-// }).catch(function(err){
-//    console.log('OOPS. try again.')
-// });
-// res.redirect('/your-gabs/');
-// });
-
 // ---------------------------------------------------------
 app.post('/logout', function (req,res) {
    req.session.destroy();
-   // console.log("bye!")
    res.redirect('/gab-bye');
-   // res.redirect('/');
 });
 
 app.get('/gab-bye', function (req,res) {
