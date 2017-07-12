@@ -200,6 +200,9 @@ app.get('/gab-bye', function (req,res) {
    res.send('See ya later!');
 });
 
-app.listen(3000, function() {
-   console.log('Listening on port 3000!');
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
 });
+// app.listen(3000, function() {
+//    console.log('Listening on port 3000!');
+// });
