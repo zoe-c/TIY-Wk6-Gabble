@@ -204,7 +204,8 @@ app.get('/gab-bye', function (req,res) {
 
 app.listen(process.env.PORT || 3000, function() {
    console.log("success!")
-})
+});
+
 // app.listen(app.get('port'), function() {
 //   console.log('Node app is running on port', app.get('port'));
 // });
