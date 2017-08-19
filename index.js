@@ -27,10 +27,8 @@ app.use(session({
 
 }));
 
-
 // styles
 app.use(express.static('public'));
-
 
 // parser middleware
 app.use(bodyParser.json());
@@ -38,7 +36,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // validation
 app.use(expressValidator());
-
 
 // REQUESTS---------------------------------------------------------
 app.get('/', function(req,res){
