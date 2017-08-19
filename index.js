@@ -186,7 +186,7 @@ app.post('/delete', function(req,res) {
          res.redirect('/your-gabs/'));
 
 });
-
+// logout
 // ---------------------------------------------------------
 app.post('/logout', function (req,res) {
    req.session.destroy();
@@ -197,8 +197,7 @@ app.get('/gab-bye', function (req,res) {
    req.session.destroy();
    res.send('See ya later!');
 });
-
-
+// ----------------------------------------------------------
 app.listen(process.env.PORT || 3000, function() {
    console.log("success!")
 });
