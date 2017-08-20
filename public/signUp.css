@@ -82,6 +82,37 @@ label {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: solid black 1.5px;
-  border-radius: 4px;
+  /*border: solid black 1.5px;*/
+  /*border-radius: 4px;*/
+}
+
+#b2 {
+  /*width: 75%;*/
+  height: 5vw;
+  text-align: center;
+  font-size: 1.75vw;
+  font-weight: bolder;
+  border-radius: 3px;
+  border: solid black 1px;
+}
+
+
+@media (max-width: 575px) {
+
+ }
+
+
+@media (max-width: 767px) {
+
+ }
+
+
+@media (max-width: 991px) {
+
+}
+
+
+
+@media (max-width: 1199px) {
+
 }
