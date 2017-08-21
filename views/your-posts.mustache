@@ -19,15 +19,15 @@
          <h1 class="main-titles">Your Gabs</h1>
          <div id="yourGabs">
             {{#posts}}
-            <div class="gabCard">
-               <ul class="gabContent">
-                  <li class="gabTitle">{{title}}</li>
-                  <li class="gabBody">{{body}}</li>
+            <div class="gab-card">
+               <ul class="gab-content">
+                  <li class="gab-title">{{title}}</li>
+                  <li class="gab-body">{{body}}</li>
                   <br>
                   <li class="date">{{createdAt}}</li>
                </ul>
-               <form class="deletePostForm" method="POST" action= "/delete">
-                  <button type="submit" class="deletePost" name="deleteButton" value="{{id}}">DELETE</button>
+               <form id="deletePostForm" method="POST" action= "/delete">
+                  <button type="submit" id="deletePostButton" name="deleteButton" value="{{id}}">DELETE</button>
                </form>
             </div>
             {{/posts}}
