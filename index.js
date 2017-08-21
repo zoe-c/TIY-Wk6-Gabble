@@ -56,7 +56,7 @@ app.post('/login', function (req,res){
       req.session.username = username;
       req.session.gabberId = gabber.id;
       req.session.authenticated = true;
-      res.redirect('/userHome/');
+      res.redirect('/home/');
     } else {
       req.session.authenticated = false;
       console.log('unauthorized!');
@@ -69,16 +69,16 @@ app.post('/login', function (req,res){
 //------------------------------------------------------------------
 
 // link to sign up page. login is on root.
-app.post('/to-signUp', function (req,res) {
-   res.redirect('/signUp');
+app.post('/to-signup', function (req,res) {
+   res.redirect('/sign-up');
 });
 
 // render sign up form
-app.get('/signUp', function (req,res) {
-   res.render('signUp');
+app.get('/sign-up', function (req,res) {
+   res.render('sign-up');
 });
 
-app.post('/signUp', function (req, res) {
+app.post('/sign-up', function (req, res) {
    const gabber = models.gabber.build({
       username: req.body.username,
       password: req.body.password1
@@ -96,12 +96,16 @@ app.post('/to-login', function (req,res) {
 });
 
 // -------------------------------------------------------------
-app.get('/userHome/', function (req,res) {
-   res.render('userHome', {username: req.session.username})
+app.get('/home/', function (req,res) {
+   res.render('home', {username: req.session.username})
+});
+
+app.get('/gotta-gab/', function (req,res) {
+   res.render('got-a-gab', {username: req.session.username})
 });
 
 // -------------------------------------------------------------
-app.post('/postToGaggle', function (req, res) {
+app.post('/post-gab', function (req, res) {
    const post = models.post.build({
       title: req.body.gabTitle,
       body: req.body.gabBody,
@@ -109,11 +113,11 @@ app.post('/postToGaggle', function (req, res) {
    })
    post.save().then(function (newPost) {
       console.log(newPost);
-      res.redirect('/gaggle/');
+      res.redirect('/community-gabs/');
    });
 });
 // ------------------------------------------------------------
-app.get('/gaggle/', function (req,res) {
+app.get('/community-gabs/', function (req,res) {
    // IDEA: add link around title to switch to a solo page of this post,
    // on that page, you will list the names of who all liked that post
    models.post.findAll({
@@ -125,7 +129,7 @@ app.get('/gaggle/', function (req,res) {
          }
       ]
    }).then(function(posts) {
-      res.render('gabbleGaggle', {posts: posts})
+      res.render('gabble-community', {posts: posts})
    });
 });
 
@@ -141,7 +145,7 @@ app.post('/like', function (req,res) {
       console.log(newLike);
    });
    // eventually, alert that they liked the post and then send them back to the gaggle.
-   res.redirect('/gaggle/');
+   res.redirect('/community-gabs/');
 });
 
 // -----------------------------------------------------
@@ -160,7 +164,7 @@ app.post('/like', function (req,res) {
       // THIS IS RENDERING ALL LIKES ASSOCIATED WITH THE SAME POST SEPERATELY.
    }).then(function(likes) {
       console.log(likes);
-      res.render('likedBy', {likes: likes})
+      res.render('liked-by', {likes: likes})
     });
 
 });
@@ -173,7 +177,7 @@ app.get('/your-gabs/', function (req,res) {
          gabberId: req.session.gabberId
       }
    }).then(function(posts) {
-      res.render('yourPosts', {posts: posts})
+      res.render('your-posts', {posts: posts})
    });
 });
 

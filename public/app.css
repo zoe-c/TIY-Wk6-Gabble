@@ -19,11 +19,13 @@ html {
 
 .body-wrap {
   width: 100vw;
+  min-height: 100vh;
   padding: 2em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url('/imgs/background.png');
+  /*Background pattern from Subtle Patterns*/
+  background-image: url('./imgs/background.png');
 }
 
 nav {
@@ -44,7 +46,7 @@ a {
 }
 
 /*HOME/LOGIN PAGE------------------------------------------*/
-#title-div {
+#titleDiv {
    width: 100vw;
    height: 30vw;
    display: flex;
@@ -60,14 +62,14 @@ a {
    line-height: 90%;
 }
 
-#gab-subtitle {
+#gabSubtitle {
    font-size: 5vw;
    font-weight: lighter;
    color: darkgrey;
    /*border: solid black 1px;*/
 }
 
-#login-div {
+#loginDiv {
    width: 65vw;
    height: 45vw;
    display: flex;
@@ -86,7 +88,7 @@ a {
    border-top: solid black 1.5px;
 }
 
-#login-form {
+#loginForm {
    width: 60vw;
    height: 75%;
    display: flex;
@@ -115,7 +117,7 @@ label {
    font-weight: bolder;
 }
 
-#signup-div {
+#signUpDiv {
    width: 65vw;
    height: 15vw;
    display: flex;
@@ -124,7 +126,7 @@ label {
    align-items: center;
 }
 
-#to-signUp {
+#toSignUp {
    width: 60vw;
    text-align: center;
 }
@@ -140,17 +142,17 @@ label {
    font-weight: bolder;
 }
 /*SIGN UP PAGE---------------------------------------------*/
-#signup-title {
+#signupTitle {
   margin-top: 5vw;
   font-size: 10vw;
 }
 
-#signup-subtitle {
+#signupSubtitle {
   font-size: 5vw;
   font-weight: lighter;
 }
 
-#signup-pg-content {
+#signupFormContent {
   width: 65vw;
   height: 55vw;
   display: flex;
@@ -191,7 +193,7 @@ label {
 }
 
 
-#to-login-form {
+#toLoginForm {
   width: 65vw;
   display: flex;
   flex-direction: column;
@@ -201,7 +203,7 @@ label {
   /*border-radius: 4px;*/
 }
 
-#to-login-button {
+#toLoginButton {
   width: inherit;
   height: 5vw;
   text-align: center;
@@ -282,7 +284,7 @@ h3 {
    font-size: 8vw;
 }
 
-h3 {
+#communityGabsTitle {
    margin-top: 2vw;
    font-size: 4vw;
    font-weight: lighter;
@@ -298,7 +300,7 @@ h3 {
    border-radius: 4px;
 }
 
-.gabCard {
+.gab-card {
    width: 60vw;
    height: 12vw;
    padding: 1vw;
@@ -311,13 +313,13 @@ h3 {
    border: solid black 1px;
    border-radius: 3px;
 }
-.gabContent {
+.gab-content {
    width: 27vw;
    list-style-type: none;
    /*border: solid black 1px;*/
 }
 
-.gabTitle {
+.gab-title {
    font-weight: bolder;
 }
 
@@ -326,14 +328,14 @@ h3 {
    font-weight: lighter;
 }
 
-.likeForm {
+#likeForm {
    width: 27vw;
    display: flex;
    justify-content: center;
    align-items: center;
 }
 
-.likeButtons {
+.like-buttons {
    font-size: 1.25vw;
    padding: 1vw;
    border: solid black 1.5px;

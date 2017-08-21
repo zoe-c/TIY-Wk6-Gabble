@@ -4,25 +4,24 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="../app.css">
-       <!-- <link rel="stylesheet" href="../gabbleGaggle.css"> -->
-      <title>GABBLE: The Gaggle</title>
+       <!-- <link rel="stylesheet" href="../gabble-community.css"> -->
+      <title>GABBLE: Community Gabs</title>
    </head>
    <body>
       <div class="body-wrap">
          <nav>
-            <a href="/userHome/">CREATE NEW GAB</a>
-            <a href="/your-gabs/">YOUR GABS</a>
-            <a href="/likedBy">LIKES</a>
-            <a href="/gab-bye">LOGOUT</a>
+            <a href="/home/">HOME</a>
+            <a href="/your-gabs/">MY GABS</a>
+            <!-- <a href="/likedBy">LIKES</a> -->
+            <a href="/gab-bye">GAB-BYE</a>
          </nav>
-         <h1>The Gabble Gaggle</h1>
-         <h3>What's the gab?</h3>
+         <h3 id="communityGabsTitle"><i>The gab on the street is...<i></h3>
          <div id="allGabs">
             {{#posts}}
-            <div class="gabCard">
-               <ul class="gabContent">
-                  <li class="gabTitle">{{title}}</li>
-                  <li class="gabBody">{{body}}</li>
+            <div class="gab-card">
+               <ul class="gab-content">
+                  <li class="gab-title">{{title}}</li>
+                  <li class="gab-body">{{body}}</li>
                   <br>
                   <li class="gabber">Posted by: {{gabber.username}}</li>
                   <li class="date">{{createdAt}}</li>
@@ -33,8 +32,8 @@
                   <button type="submit" class="deletePost" name="likeButton" value="{{id}}">LIKE</button>
                </form> -->
 
-               <form class="likeForm" method="POST" action= "/like">
-                  <button type="submit" class="likeButtons" name="likeButton" value="{{id}}">LIKE</button>
+               <form id="likeForm" method="POST" action= "/like">
+                  <button type="submit" class="like-buttons" name="likeButton" value="{{id}}">LIKE</button>
                </form>
             </div>
             {{/posts}}

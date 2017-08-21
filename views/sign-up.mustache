@@ -9,10 +9,10 @@
    </head>
    <body>
       <div class="body-wrap">
-         <h1 id="signup-title">SIGN UP</h1>
-         <h2 id="signup-subtitle"><i>join the gabble gaggle</i></h2>
-         <div id="signup-pg-content">
-            <form method="POST" action= "/signUp" id="signUpForm">
+         <h1 id="signupTitle">SIGN UP</h1>
+         <h2 id="signupSubtitle"><i>get in on the gab</i></h2>
+         <div id="signupFormContent">
+            <form method="POST" action= "/sign-up" id="signUpForm">
                 <label for="username">USERNAME :</label>
                 <input type="text" name="username" id="username" placeholder="Enter a username">
                 <label for="password1">PASSWORD :</label>
@@ -23,11 +23,9 @@
             </form>
          </div>
 
-         <form method="POST" action="to-login" name="to-login" id="to-login-form">
-           <input type="submit" name="to-login" value="BACK TO LOGIN" id="to-login-button">
+         <form method="POST" action="/to-login" name="to-login" id="toLoginForm">
+           <input type="submit" name="to-login" value="BACK TO LOGIN" id="toLoginButton">
          </form>
-
-
 
          <!--script below src= https://www.sitepoint.com/using-the-html5-constraint-api-for-form-validation/ -->
          <script type="text/javascript">
