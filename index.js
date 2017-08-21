@@ -89,6 +89,11 @@ app.post('/signUp', function (req, res) {
    });
          res.redirect('/');
 });
+// --------------------------------------
+// link to login page. currently only on signUp
+app.post('/to-login', function (req,res) {
+   res.redirect('/');
+});
 
 // -------------------------------------------------------------
 app.get('/userHome/', function (req,res) {

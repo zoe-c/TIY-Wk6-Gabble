@@ -23,6 +23,7 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url('/imgs/background.png');
 }
 
 nav {
@@ -59,7 +60,7 @@ a {
    line-height: 90%;
 }
 
-#gab-sub-title {
+#gab-subtitle {
    font-size: 5vw;
    font-weight: lighter;
    color: darkgrey;
@@ -114,7 +115,7 @@ label {
    font-weight: bolder;
 }
 
-#signupDiv {
+#signup-div {
    width: 65vw;
    height: 15vw;
    display: flex;
@@ -139,17 +140,17 @@ label {
    font-weight: bolder;
 }
 /*SIGN UP PAGE---------------------------------------------*/
-h1 {
+#signup-title {
   margin-top: 5vw;
   font-size: 10vw;
 }
 
-h2 {
+#signup-subtitle {
   font-size: 5vw;
   font-weight: lighter;
 }
 
-#signUpDiv {
+#signup-pg-content {
   width: 65vw;
   height: 55vw;
   display: flex;
@@ -190,7 +191,7 @@ label {
 }
 
 
-#b2-login {
+#to-login-form {
   width: 65vw;
   display: flex;
   flex-direction: column;
@@ -200,8 +201,8 @@ label {
   /*border-radius: 4px;*/
 }
 
-#b2 {
-  /*width: 75%;*/
+#to-login-button {
+  width: inherit;
   height: 5vw;
   text-align: center;
   font-size: 1.75vw;
@@ -354,7 +355,6 @@ h3 {
 @media (max-width: 991px) {
 
 }
-
 
 
 @media (max-width: 1199px) {
