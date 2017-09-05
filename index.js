@@ -16,7 +16,7 @@ const app= express();
 
 // views
 app.engine('mustache', mustacheExpress());
-app.set('views', ['./views', './views/user']);
+app.set('views', './views');
 app.set('view engine', 'mustache');
 
 //SESSIONS ABOVE routes
@@ -39,7 +39,7 @@ app.use(expressValidator());
 
 // REQUESTS---------------------------------------------------------
 app.get('/', function(req,res){
-   res.render('index');
+   res.render('login');
 });
 
 app.post('/login', function (req,res){
@@ -56,7 +56,7 @@ app.post('/login', function (req,res){
       req.session.username = username;
       req.session.gabberId = gabber.id;
       req.session.authenticated = true;
-      res.redirect('/home/');
+      res.redirect('/home');
     } else {
       req.session.authenticated = false;
       console.log('unauthorized!');
@@ -68,14 +68,9 @@ app.post('/login', function (req,res){
 
 //------------------------------------------------------------------
 
-// link to sign up page. login is on root.
-app.post('/to-signup', function (req,res) {
-   res.redirect('/sign-up');
-});
-
 // render sign up form
-app.get('/sign-up', function (req,res) {
-   res.render('sign-up');
+app.get('/signup', function (req,res) {
+   res.render('signup');
 });
 
 app.post('/sign-up', function (req, res) {
@@ -89,18 +84,13 @@ app.post('/sign-up', function (req, res) {
    });
          res.redirect('/');
 });
-// --------------------------------------
-// link to login page. currently only on signUp
-app.post('/to-login', function (req,res) {
-   res.redirect('/');
-});
 
 // -------------------------------------------------------------
-app.get('/home/', function (req,res) {
+app.get('/home', function (req,res) {
    res.render('home', {username: req.session.username})
 });
 
-app.get('/gotta-gab/', function (req,res) {
+app.get('/gotta-gab', function (req,res) {
    res.render('got-a-gab', {username: req.session.username})
 });
 
@@ -113,13 +103,11 @@ app.post('/post-gab', function (req, res) {
    })
    post.save().then(function (newPost) {
       console.log(newPost);
-      res.redirect('/community-gabs/');
+      res.redirect('/community-gabs');
    });
 });
 // ------------------------------------------------------------
-app.get('/community-gabs/', function (req,res) {
-   // IDEA: add link around title to switch to a solo page of this post,
-   // on that page, you will list the names of who all liked that post
+app.get('/community-gabs', function (req,res) {
    models.post.findAll({
       order: [['id', 'DESC']],
       include: [
@@ -145,33 +133,59 @@ app.post('/like', function (req,res) {
       console.log(newLike);
    });
    // eventually, alert that they liked the post and then send them back to the gaggle.
-   res.redirect('/community-gabs/');
+   res.redirect('/community-gabs');
 });
 
 // -----------------------------------------------------
- app.get('/likedBy', function (req,res) {
-    models.like.findAll({
-      include: [
-         {
-            model: models.post,
-            as: 'post'
-         },
-         {
-            model: models.gabber,
-            as: 'gabber'
-         }
-      ]
-      // THIS IS RENDERING ALL LIKES ASSOCIATED WITH THE SAME POST SEPERATELY.
-   }).then(function(likes) {
-      console.log(likes);
-      res.render('liked-by', {likes: likes})
-    });
-
+ app.get('/likes', function (req,res) {
+   res.render('liked-by');
 });
+
+app.get('/likesGiven', function (req, res) {
+  models.like.findAll({
+    include: [
+       {
+          model: models.post,
+          as: 'post'
+       },
+       {
+          model: models.gabber,
+          as: 'gabber'
+       }
+    ],
+    where: {
+       gabberId: req.session.gabberId,
+    }
+ }).then(function(likes) {
+   res.render('liked-by', { likes: likes })
+   });
+ });
+
+ app.get('/likesRecieved', function (req, res) {
+   models.like.findAll({
+     include: [
+        {
+           model: models.post,
+           as: 'post'
+        },
+        {
+           model: models.gabber,
+           as: 'gabber'
+        }
+     ],
+     where: {
+        gabberId: {
+          $ne: req.session.gabberId,
+        }
+     }
+  }).then(function(likes) {
+    res.render('liked-by', { likes: likes })
+    });
+  });
 
 // -----------------------------------------------------------
 // adding delete feature
-app.get('/your-gabs/', function (req,res) {
+app.get('/your-gabs', function (req,res) {
    models.post.findAll({
       where: {
          gabberId: req.session.gabberId
@@ -192,7 +206,7 @@ app.post('/delete', function(req,res) {
             id: req.body.deleteButton
          }
       })).then(
-         res.redirect('/your-gabs/'));
+         res.redirect('/your-gabs'));
 
 });
 // logout

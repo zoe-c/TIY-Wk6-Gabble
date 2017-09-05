@@ -1,7 +1,3 @@
-*, *:before, *:after {
-  box-sizing: border-box;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -9,126 +5,121 @@
   outline: 0;
   vertical-align: baseline;
   background: transparent;
-  /*border: solid black 1px;*/
 }
 
 html {
-   width: 100vw;
-   height: 100%;
-   font-family: sans-serif;
+  width: 100vw;
+  min-height: 100vh;
+  font-family: sans-serif;
 }
 
-.bodyWrap {
-   width: 100vw;
-   padding: 2em;
-   height: 100vw;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-
+body {
+  display: flex;
+  justify-content: center;
 }
 
-#titleDiv {
-   width: 100vw;
-   height: 30vw;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   margin-top: 5vw;
-   /*border: solid black 1px;*/
+.body-wrap {
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em;
 }
 
-h1 {
-   font-size: 15vw;
-   padding: 0;
-   line-height: 90%;
-   /*border: solid black 1px;*/
+.container-fluid {
+  text-align: center;
 }
 
-h2 {
-   font-size: 5vw;
-   font-weight: lighter;
-   /*padding: 0;*/
-   color: darkgrey;
-   /*border: solid black 1px;*/
-}
-/*---------------------------------*/
-
-#loginDiv {
-   width: 65vw;
-   height: 45vw;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   border: solid black 1.5px;
-   border-radius: 4px;
+#gabMainTitle {
+  font-size: 15vw;
+  padding: 0;
+  line-height: 90%;
 }
 
-h4 {
-   /*color: lightgrey;*/
-   text-align: center;
-   font-size: 3vw;
-   padding-top: 3vw;
-   width: 60vw;
-   border-top: solid black 1.5px;
-   /*border-radius: 4px;*/
-}
-#loginForm {
-   width: 60vw;
-   height: 75%;
-   display: flex;
-   flex-flow: wrap column;
-   justify-content: space-around;
-   align-items: center;
-   /*border: solid black 1px;*/
+#gabSubTitle, #signupSubtitle {
+  font-size: 5.5vw;
+  font-weight: lighter;
+  color: darkgrey;
 }
 
 label {
-   width: 75%;
-   /*text-align: center;*/
-   font-size: 1.75vw;
-   font-weight: bolder;
+   font-size: 2vh;
+   font-weight: bold;
 }
 
-#username, #password, #imback {
-   width: 75%;
-   height: 5vw;
-   text-align: center;
-   font-size: 1.75vw;
-   border-radius: 3px;
-   border: solid black 1px;
+input {
+
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  text-align: center;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  text-align: center;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  text-align: center;
+}
+:-moz-placeholder { /* Firefox 18- */
+text-align: center;
 }
 
-#imback {
-   margin-top: 3vw;
-   font-weight: bolder;
-}
-/*------------------------------------*/
-#signupDiv {
-   width: 65vw;
-   height: 15vw;
-   display: flex;
-   flex-flow: wrap column;
-   justify-content: center;
-   align-items: center;
-   /*border: solid black 1px;
-   border-radius: 4px;*/
+.form-group {
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
 }
 
-#to-signUp {
-   width: 60vw;
-   text-align: center;
+#loginTitle, #signupTitle {
+  font-size: 5vh;
+  padding-top: 10px;
 }
 
-#imnew {
-   width: 75%;
-   height: 5vw;
-   text-align: center;
-   font-size: 1.75vw;
-   border-radius: 3px;
-   border: solid black 1px;
-   margin-top: 2vw;
-   font-weight: bolder;
+#loginForm, #signupForm, #postForm {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid black 2px;
+  border-radius: 4px;
+}
+
+#signUpDiv, #toLoginDiv {
+  width: 80%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/*likes pg. clean this up*/
+.button-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+
+@media (max-width: 575px) {
+  .form-control-lg {
+    width: 95%;
+  }
+}
+
+
+@media (max-width: 767px) {
+  #loginForm, #signupForm {
+    width: 90%;
+    border: solid black 1px;
+  }
+ }
+
+
+@media (max-width: 991px) {
+
+}
+
+
+@media (max-width: 1199px) {
+
 }

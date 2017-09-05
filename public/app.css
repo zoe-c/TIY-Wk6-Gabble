@@ -1,15 +1,3 @@
-*, *:before, *:after {
-  box-sizing: border-box;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  vertical-align: baseline;
-  background: transparent;
-}
 
 html {
    width: 100vw;
@@ -316,7 +304,6 @@ h3 {
 .gab-content {
    width: 27vw;
    list-style-type: none;
-   /*border: solid black 1px;*/
 }
 
 .gab-title {

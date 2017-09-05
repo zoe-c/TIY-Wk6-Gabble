@@ -1,49 +1,42 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="../app.css">
-       <!-- <link rel="stylesheet" href="../gabble-community.css"> -->
-      <title>GABBLE: Community Gabs</title>
-   </head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1", shrink-to-fit="no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <!-- App Styles  -->
+    <link rel="stylesheet" href="../index.css">
+    <title>GABBLE: Community Gabs</title>
+  </head>
    <body>
-      <div class="body-wrap">
+      <div class="container-fluid body-wrap">
          <nav>
-            <a href="/home/">HOME</a>
-            <a href="/your-gabs/">MY GABS</a>
-            <!-- <a href="/likedBy">LIKES</a> -->
-            <a href="/gab-bye">GAB-BYE</a>
+            <a href="/home" class="btn btn-outline-dark">HOME</a>
+            <a href="/your-gabs" class="btn btn-outline-dark">MY GABS</a>
+            <a href="/likes" class="btn btn-outline-dark">LIKES</a>
+            <a href="/gab-bye" class="btn btn-outline-dark">GAB-BYE</a>
          </nav>
          <h3 id="communityGabsTitle"><i>The gab on the street is...<i></h3>
          <div id="allGabs">
             {{#posts}}
-            <div class="gab-card">
-               <ul class="gab-content">
-                  <li class="gab-title">{{title}}</li>
-                  <li class="gab-body">{{body}}</li>
-                  <br>
-                  <li class="gabber">Posted by: {{gabber.username}}</li>
-                  <li class="date">{{createdAt}}</li>
-                  <!-- <li> like count. need to add</li> -->
-               </ul>
-
-               <!-- <form class="deletePostForm" method="POST" action= "/delete">
-                  <button type="submit" class="deletePost" name="likeButton" value="{{id}}">LIKE</button>
-               </form> -->
-
-               <form id="likeForm" method="POST" action= "/like">
-                  <button type="submit" class="like-buttons" name="likeButton" value="{{id}}">LIKE</button>
-               </form>
+            <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
+              <div class="card-header">{{gabber.username}} @ {{createdAt}}</div>
+              <div class="card-body">
+                <h4 class="card-title">{{title}}</h4>
+                <p class="card-text">{{body}}</p>
+              </div>
             </div>
             {{/posts}}
          </div>
-
-
          <form id="logoutForm" method="POST" action="/logout">
             <input type="submit" value="logout">
          </form>
 
       </div>
+
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
    </body>
 </html>
