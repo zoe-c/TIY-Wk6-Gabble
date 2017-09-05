@@ -1,13 +1,15 @@
+
+/*general styles--------------------------------------------------------------*/
 * {
-  margin: 0;
+  /*margin: 0;
   padding: 0;
   border: 0;
   outline: 0;
-  vertical-align: baseline;
+  vertical-align: baseline;*/
   background: transparent;
 }
 
-html {
+html,body {
   width: 100vw;
   min-height: 100vh;
   font-family: sans-serif;
@@ -26,10 +28,40 @@ body {
   padding: 2em;
 }
 
-.container-fluid {
+ul {
+  list-style-type: none;
+}
+
+.form-group {
   text-align: center;
 }
 
+.form-control-lg {
+  width: 95%;
+}
+
+label {
+  display: block;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  text-align: center;
+  font-size: 85%;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  text-align: center;
+  font-size: 85%;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  text-align: center;
+  font-size: 85%;
+}
+:-moz-placeholder { /* Firefox 18- */
+  text-align: center;
+  font-size: 85%;
+}
+
+/*login/ signup----------------------------------------------- '/' & '/signup'*/
 #gabMainTitle {
   font-size: 15vw;
   padding: 0;
@@ -42,38 +74,9 @@ body {
   color: darkgrey;
 }
 
-label {
-   font-size: 2vh;
-   font-weight: bold;
-}
-
-input {
-
-}
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  text-align: center;
-}
-::-moz-placeholder { /* Firefox 19+ */
-  text-align: center;
-}
-:-ms-input-placeholder { /* IE 10+ */
-  text-align: center;
-}
-:-moz-placeholder { /* Firefox 18- */
-text-align: center;
-}
-
-.form-group {
-  display: flex;
-  flex-flow: wrap row;
-  justify-content: center;
-  align-items: center;
-  text-align: left;
-}
-
 #loginTitle, #signupTitle {
-  font-size: 5vh;
-  padding-top: 10px;
+  /*font-size: 5vh;*/
+  margin: 10px 0;
 }
 
 #loginForm, #signupForm, #postForm {
@@ -85,33 +88,35 @@ text-align: center;
   border-radius: 4px;
 }
 
-#signUpDiv, #toLoginDiv {
+#toSignupDiv, #toLoginDiv {
   width: 80%;
+  /*text-align: center;*/
 }
 
-ul {
-  list-style-type: none;
-}
-
-/*likes pg. clean this up*/
+/*likes-----------------------------------------------------------------------*/
 .button-container {
   display: flex;
   justify-content: space-around;
 }
 
 
-@media (max-width: 575px) {
-  .form-control-lg {
-    width: 95%;
-  }
-}
+/*@media (max-width: 575px) {
+
+}*/
 
 
 @media (max-width: 767px) {
   #loginForm, #signupForm {
-    width: 90%;
+    width: 98%;
     border: solid black 1px;
   }
+
+  #gabMainTitle {
+    font-size: 20vw;
+    padding: 0;
+    line-height: 90%;
+  }
+
  }
 
 

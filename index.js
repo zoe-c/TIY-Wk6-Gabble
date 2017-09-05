@@ -37,7 +37,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // validation
 app.use(expressValidator());
 
-// REQUESTS---------------------------------------------------------
+// ---------------------------------------------
 app.get('/', function(req,res){
    res.render('login');
 });
@@ -67,8 +67,6 @@ app.post('/login', function (req,res){
 });
 
 //------------------------------------------------------------------
-
-// render sign up form
 app.get('/signup', function (req,res) {
    res.render('signup');
 });
@@ -82,7 +80,7 @@ app.post('/sign-up', function (req, res) {
       console.log(username);
       next();
    });
-         res.redirect('/');
+  res.redirect('/');
 });
 
 // -------------------------------------------------------------
@@ -117,11 +115,11 @@ app.get('/community-gabs', function (req,res) {
          }
       ]
    }).then(function(posts) {
-      res.render('gabble-community', {posts: posts})
+      res.render('gabble-community', { posts: posts })
    });
 });
 
-// like instance test
+// like a post
 app.post('/like', function (req,res) {
    const like = models.like.build({
          status: true,
@@ -138,7 +136,7 @@ app.post('/like', function (req,res) {
 
 // -----------------------------------------------------
  app.get('/likes', function (req,res) {
-   res.render('liked-by');
+   res.render('likes');
 });
 
 app.get('/likesGiven', function (req, res) {
@@ -157,7 +155,7 @@ app.get('/likesGiven', function (req, res) {
        gabberId: req.session.gabberId,
     }
  }).then(function(likes) {
-   res.render('liked-by', { likes: likes })
+   res.render('likes', { likes: likes })
    });
  });
 
@@ -179,12 +177,12 @@ app.get('/likesGiven', function (req, res) {
         }
      }
   }).then(function(likes) {
-    res.render('liked-by', { likes: likes })
+    res.render('likes', { likes: likes })
     });
   });
 
 // -----------------------------------------------------------
-// adding delete feature
+//delete post
 app.get('/your-gabs', function (req,res) {
    models.post.findAll({
       where: {
