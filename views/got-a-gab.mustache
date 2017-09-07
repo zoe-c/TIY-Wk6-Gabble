@@ -11,22 +11,23 @@
    </head>
    <body>
      <div class="container-fluid body-wrap">
-       <nav class="container-fluid">
-         <a href="/home" class="btn btn-outline-dark">HOME</a>
-         <a href="/your-gabs" class="btn btn-outline-dark">MY GABS</a>
-         <a href="/likes" class="btn btn-outline-dark">LIKED GABS</a>
-         <a href="/gab-bye" class="btn btn-outline-dark">GAB-BYE</a>
+       <nav class="navbar">
+          <a href="/home" class="btn btn-outline-dark nav-btn">HOME</a>
+          <a href="/community-gabs" class="btn btn-outline-dark nav-btn">WHAT'S THE GAB?</a>
+          <a href="/your-gabs" class="btn btn-outline-dark nav-btn">MY GABS</a>
+          <a href="/likes" class="btn btn-outline-dark nav-btn">LIKES</a>
+          <a href="/gab-bye" class="btn btn-outline-dark nav-btn">GAB-BYE</a>
        </nav>
        <h1> GAB ABOUT IT </h1>
        <br>
        <form  method="POST" action= "/post-gab" class="container-fluid" id="postForm">
          <div class="form-group container-fluid">
-           <input type="text" name="gabTitle" maxlength="25" placeholder= "Title" id= "gabTitle">
+           <input type="text" name="title" maxlength="25" placeholder= "TITLE IT" class="form-control-lg border" id= "gabTitle">
          </div>
          <div class="form-group container-fluid">
-           <input type= "textarea" name= "gabBody" maxlength="140" placeholder= "Gab about it..." id= "gabBody">
+           <textarea name= "body" placeholder= "TYPE IT" rows="5" class="form-control-lg border" id= "gabBody"></textarea>
          </div>
-         <input type= "submit" value="POST" class="btn btn-block btn-outline-dark" id= "postButton">
+         <input type= "submit" value="POST IT" class="btn btn-block btn-lg btn-outline-dark" id= "postButton">
         </form>
      </div>
 

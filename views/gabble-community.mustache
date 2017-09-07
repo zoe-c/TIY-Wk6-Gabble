@@ -11,28 +11,29 @@
   </head>
    <body>
       <div class="container-fluid body-wrap">
-         <nav>
-            <a href="/home" class="btn btn-outline-dark">HOME</a>
-            <a href="/your-gabs" class="btn btn-outline-dark">MY GABS</a>
-            <a href="/likes" class="btn btn-outline-dark">LIKES</a>
-            <a href="/gab-bye" class="btn btn-outline-dark">GAB-BYE</a>
+         <nav class="navbar">
+            <a href="/home" class="btn btn-outline-dark nav-btn">HOME</a>
+            <a href="/gotta-gab" class="btn btn-outline-dark nav-btn">GOT A GAB</a>
+            <a href="/your-gabs" class="btn btn-outline-dark nav-btn">MY GABS</a>
+            <a href="/likes" class="btn btn-outline-dark nav-btn">LIKES</a>
+            <a href="/gab-bye" class="btn btn-outline-dark nav-btn">GAB-BYE</a>
          </nav>
-         <h3 id="communityGabsTitle"><i>The gab on the street is...<i></h3>
-         <div id="allGabs">
+
+         <h2 id="comGabsTitle"><i>The gab on the street is...</i></h2>
+         <div class="gabs-container container-fluid">
             {{#posts}}
-            <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
-              <div class="card-header">{{gabber.username}} @ {{createdAt}}</div>
+            <div class="card border-dark mb-3">
               <div class="card-body">
-                <h4 class="card-title">{{title}}</h4>
-                <p class="card-text">{{body}}</p>
+                <h3 class="card-title">{{title}}</h3>
+                <h6 class="card-text">{{body}}</h6>
+              </div>
+              <div class="card-footer">
+                <!-- <div id="imgDiv"></div> -->
+                By: {{gabber.username}} @ {{createdAt}}
               </div>
             </div>
             {{/posts}}
          </div>
-         <form id="logoutForm" method="POST" action="/logout">
-            <input type="submit" value="logout">
-         </form>
-
       </div>
 
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

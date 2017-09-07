@@ -1,11 +1,7 @@
-
+/*343a40*/
 /*general styles--------------------------------------------------------------*/
 * {
-  /*margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  vertical-align: baseline;*/
+  color: #343A40;
   background: transparent;
 }
 
@@ -60,6 +56,34 @@ label {
   text-align: center;
   font-size: 85%;
 }
+/*nav styles-------------------------------*/
+/*nav styles-------------------------------*/
+.navbar {
+  width: 100vw;
+  max-width: 1000px;
+  margin-bottom: 1em;
+  padding: 1em;
+  border-radius: 3px;
+}
+
+.nav-btn {
+  width: 20%;
+  padding: 1em;
+}
+
+/*card styles-------------------------------*/
+.card-title {
+  border-bottom: solid 1px #FFE900;
+}
+
+.card {
+  width: 90%;
+  background: white;
+}
+
+.card-text {
+  min-height: 3vh;
+}
 
 /*login/ signup----------------------------------------------- '/' & '/signup'*/
 #gabMainTitle {
@@ -71,11 +95,9 @@ label {
 #gabSubTitle, #signupSubtitle {
   font-size: 5.5vw;
   font-weight: lighter;
-  color: darkgrey;
 }
 
 #loginTitle, #signupTitle {
-  /*font-size: 5vh;*/
   margin: 10px 0;
 }
 
@@ -90,7 +112,6 @@ label {
 
 #toSignupDiv, #toLoginDiv {
   width: 80%;
-  /*text-align: center;*/
 }
 
 /*likes-----------------------------------------------------------------------*/
@@ -99,14 +120,46 @@ label {
   justify-content: space-around;
 }
 
+/*gotta gab-------------------------------------------------------------------*/
+#postForm {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-/*@media (max-width: 575px) {
+/*community-gabs--------------------------------------------------------------*/
+.gabs-container {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid black 2px;
+  /*background-color: #343A40;*/
+  border-radius: 4px;
+}
 
+
+/*#monster {
+  width: 800px;
+  max-width: 1000px;
+  height: 800px;
+  background-image: url('./imgs/profile.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }*/
+
+@media (max-width: 650px) {
+  .nav-btn {
+    padding: 1.25em;
+  }
+}
 
 
 @media (max-width: 767px) {
-  #loginForm, #signupForm {
+  #loginForm, #signupForm, #postForm {
     width: 98%;
     border: solid black 1px;
   }
@@ -119,6 +172,22 @@ label {
 
  }
 
+@media (max-width: 880px) {
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav-btn {
+    width: 90%;
+  }
+
+  .card {
+    width: 98%;
+  }
+}
 
 @media (max-width: 991px) {
 

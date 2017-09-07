@@ -110,8 +110,8 @@ app.get('/gotta-gab', function(req,res) {
 
 app.post('/post-gab', function(req, res) {
    const post = models.post.build({
-      title: req.body.gabTitle,
-      body: req.body.gabBody,
+      title: req.body.title,
+      body: req.body.body,
       gabberId: req.session.gabberId
    })
    post.save().then(function(post) {
@@ -229,11 +229,6 @@ app.post('/delete', function(req,res) {
 
 
 // LOGOUT---------------------------------------------------------
-app.post('/logout', function(req,res) {
-   req.session.destroy();
-   res.redirect('/gab-bye');
-});
-
 app.get('/gab-bye', function(req,res) {
    req.session.destroy();
    res.send('See ya later!');

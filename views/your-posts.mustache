@@ -11,13 +11,13 @@
   </head>
    <body>
       <div class="body-wrap">
-         <nav>
-            <a href="/community-gabs" class="btn btn-outline-dark">WHAT'S THE GAB?</a>
-            <a href="/gotta-gab" class="btn btn-outline-dark">GOT A GAB</a>
-            <a href="/home" class="btn btn-outline-dark">HOME</a>
-            <a href="/likes" class="btn btn-outline-dark">LIKES</a>
-            <a href="/gab-bye" class="btn btn-outline-dark">GAB-BYE</a>
-         </nav>
+        <nav class="navbar">
+          <a href="/home" class="btn btn-outline-dark nav-btn">HOME</a>
+          <a href="/community-gabs" class="btn btn-outline-dark nav-btn">WHAT'S THE GAB?</a>
+          <a href="/gotta-gab" class="btn btn-outline-dark nav-btn">GOT A GAB</a>
+          <a href="/likes" class="btn btn-outline-dark nav-btn">LIKES</a>
+          <a href="/gab-bye" class="btn btn-outline-dark nav-btn">GAB-BYE</a>
+        </nav>
          <h1 class="main-titles">Gabs From Your Past</h1>
          <div id="yourGabs">
             {{#posts}}
@@ -29,7 +29,7 @@
                   <li class="date">{{createdAt}}</li>
                </ul>
                <form id="deletePostForm" method="POST" action= "/delete">
-                  <button type="submit" id="deletePostButton" name="deleteButton" value="{{id}}">DELETE</button>
+                  <button class="btn btn-lg btn-outline-dark" type="submit" id="deletePostButton" name="deleteButton" value="{{id}}">DELETE</button>
                </form>
             </div>
             {{/posts}}
